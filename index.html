@@ -397,7 +397,7 @@
               <div style="display:flex;gap:20px;transition:transform .35s ease;{{ projectTrackStyle }}">
                 <sc-for list="{{ projectsList }}" as="p" hint-placeholder-count="6">
                   <div style="position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.1);flex:0 0 300px">
-                    <div style="height:150px;background:repeating-linear-gradient(45deg,#eee,#eee 6px,#f7f7f5 6px,#f7f7f5 12px);display:flex;align-items:center;justify-content:center;font:400 9px ui-monospace,monospace;color:#999;position:relative"><span style="position:absolute;top:8px;left:8px;font:600 11px Inter,sans-serif;color:#141414;background:#fff;padding:1px 6px">{{ p.letter }}</span>project image</div>
+                    <div style="height:150px;position:relative;overflow:hidden"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;top:8px;left:8px;font:600 11px Inter,sans-serif;color:#141414;background:#fff;padding:1px 6px">{{ p.letter }}</span></div>
                     <div style="padding:12px 14px"><div style="font:500 16px Newsreader,serif">{{ p.name }}</div><div style="font:400 12px Inter,sans-serif;color:#777;margin-top:2px">{{ p.meta }}</div></div>
                     <div style="position:absolute;inset:0;background:rgba(20,20,20,.92);color:#fff;padding:18px;opacity:0;transition:opacity .2s;display:flex;flex-direction:column;justify-content:center" style-hover="opacity:1">
                       <div style="font:500 15px Newsreader,serif;margin-bottom:8px">{{ p.name }}</div>
@@ -555,12 +555,12 @@ const HEADLINES = [
 ];
 
 const PROJECTS_DATA = [
-  { letter: 'a', name: 'ORD International School', meta: 'Solar Decathlon India, 2020–21', role: 'Structural, Renewable Energy & Energy Efficiency', deliverables: 'Project report, presentation, pitch' },
-  { letter: 'b', name: 'Reconnect!', meta: 'Thesis, School of Planning and Architecture, New Delhi', role: 'Lead Designer & Researcher', deliverables: 'Design thesis, drawings, report' },
-  { letter: 'c', name: 'Tending the Flow', meta: 'ULI Hines Student Urban Design Competition, 2025', role: 'Urban Designer & Researcher', deliverables: 'Design proposals, research documentation' },
-  { letter: 'd', name: 'Harmony Heights', meta: 'Housing Studio, 2021', role: 'Designer', deliverables: 'Housing design, site plan, drawings' },
-  { letter: 'e', name: 'Pune Residence', meta: 'Put Your Hands Together (PYHT) Architects', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, design recommendations' },
-  { letter: 'f', name: 'Delhi Residence', meta: 'Dastkari X', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, material recommendations' }
+  { letter: 'a', name: 'ORD International School', meta: 'Solar Decathlon India, 2020–21', role: 'Structural, Renewable Energy & Energy Efficiency', deliverables: 'Project report, presentation, pitch', img: './images/projects/ord.png' },
+  { letter: 'b', name: 'Reconnect!', meta: 'Thesis, School of Planning and Architecture, New Delhi', role: 'Lead Designer & Researcher', deliverables: 'Design thesis, drawings, report', img: './images/projects/reconnect.png' },
+  { letter: 'c', name: 'Tending the Flow', meta: 'ULI Hines Student Urban Design Competition, 2025', role: 'Urban Designer & Researcher', deliverables: 'Design proposals, research documentation', img: './images/projects/tending.png' },
+  { letter: 'd', name: 'Harmony Heights', meta: 'Housing Studio, 2021', role: 'Designer', deliverables: 'Housing design, site plan, drawings', img: './images/projects/harmony.png' },
+  { letter: 'e', name: 'Pune Residence', meta: 'Put Your Hands Together (PYHT) Architects', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, design recommendations', img: './images/projects/pune.jpg' },
+  { letter: 'f', name: 'Delhi Residence', meta: 'Dastkari X', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, material recommendations', img: './images/projects/delhi.png' }
 ];
 
 const TOOLS_DATA = [
