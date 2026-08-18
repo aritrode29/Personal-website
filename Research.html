@@ -20,6 +20,7 @@
   @keyframes popupin{from{opacity:0;transform:scale(.94) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
   @keyframes growbar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
   @keyframes heroin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes blinkcursor{50%{opacity:0}}
 </style>
 </helmet>
 
@@ -42,7 +43,7 @@
       <line x1="0" y1="200" x2="1200" y2="200" stroke="#141414" stroke-width="2"></line>
     </svg>
     <div style="position:relative;font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:16px">RESEARCH</div>
-    <h1 style="position:relative;font:500 52px/1.15 Newsreader,serif;margin:0 0 20px;color:#141414;max-width:900px;text-wrap:balance">Where the work stands: published, underway, and where it started.</h1>
+    <h1 style="position:relative;font:500 52px/1.15 Newsreader,serif;margin:0 0 20px;color:#141414;max-width:900px;min-height:120px">{{ typedHeadline }}<span style="animation:blinkcursor 1s step-start infinite">|</span></h1>
     <p style="position:relative;font:400 14.5px/1.7 Inter,sans-serif;color:#555;max-width:640px">A closer look at the two research threads from the homepage, plus the coursework and internship projects that led to them.</p>
   </div>
 
@@ -367,6 +368,12 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const HEADLINES_RESEARCH = [
+  'Where the work stands: published, underway, and where it started.',
+  'From field measurements to policy — tracing the research.',
+  'How buildings shape the air we breathe indoors.'
+];
+
 const FAN1_NOTES = {
   0: 'Without accounting for ceiling fans, the annual energy simulation showed 84% of hours falling outside the adaptive comfort band.',
   1: 'Crediting ceiling fan air movement in the model reduced annual discomfort hours to 71%, and to 64% across the 7-day October field study window specifically.'
@@ -394,25 +401,50 @@ const POPUP_INFO = {
 };
 
 class Component extends DCLogic {
-  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {} };
+  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {}, typedLen: 0, headlineIdx: 0 };
 
   componentDidMount() {
+    let n = 0;
+    let phase = 'type';
+    let idx = 0;
+    const step = () => {
+      const text = HEADLINES_RESEARCH[idx];
+      if (phase === 'type') {
+        n += 1;
+        this.setState({ typedLen: n, headlineIdx: idx });
+        if (n >= text.length) { phase = 'pause'; this._typeTimer = setTimeout(step, 1800); return; }
+        this._typeTimer = setTimeout(step, 55);
+      } else if (phase === 'pause') {
+        phase = 'delete';
+        this._typeTimer = setTimeout(step, 40);
+      } else {
+        n -= 1;
+        this.setState({ typedLen: Math.max(n, 0) });
+        if (n <= 0) { phase = 'type'; idx = (idx + 1) % HEADLINES_RESEARCH.length; this._typeTimer = setTimeout(step, 500); return; }
+        this._typeTimer = setTimeout(step, 28);
+      }
+    };
+    step();
+
     const ids = ['published', 'inwork', 'classwork'];
-    this._observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.setState((s) => ({ revealed: { ...s.revealed, [entry.target.id]: true } }));
-          this._observer.unobserve(entry.target);
-        }
+    setTimeout(() => {
+      this._observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.setState((s) => ({ revealed: { ...s.revealed, [entry.target.id]: true } }));
+            this._observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) this._observer.observe(el);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) this._observer.observe(el);
-    });
+    }, 100);
   }
 
   componentWillUnmount() {
+    if (this._typeTimer) clearTimeout(this._typeTimer);
     if (this._observer) this._observer.disconnect();
   }
 
@@ -443,6 +475,7 @@ class Component extends DCLogic {
       this.setState({ popupId: id, popupScope: scope, popupAnchor: { top: e.clientY - rect.top, left: e.clientX - rect.left } });
     };
     return {
+      typedHeadline: HEADLINES_RESEARCH[this.state.headlineIdx].slice(0, this.state.typedLen),
       revealPublished: revealStyle('published'),
       revealInwork: revealStyle('inwork'),
       revealClasswork: revealStyle('classwork'),
