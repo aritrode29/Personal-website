@@ -42,36 +42,46 @@
 
           <!-- scattered background figures — click to explore -->
           <div onClick="{{ openFigThermo }}" title="Thermal comfort" style="{{ thermoWrapStyle }}" style-hover="opacity:.95;transform:rotate(-4deg) scale(1.1)">
-            <svg viewBox="0 0 120 96" width="108" height="86" fill="none" stroke="#141414" stroke-width="1.3">
+            <svg viewBox="0 0 120 96" width="108" height="86" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <g><animateTransform attributeName="transform" type="translate" values="0,0;2,0;0,0" dur="4s" repeatCount="indefinite"/>
               <circle cx="92" cy="20" r="12"></circle>
-              <line x1="92" y1="4" x2="92" y2="-4" transform="translate(0,4)"></line>
-              <line x1="76" y1="16" x2="70" y2="12"></line><line x1="76" y1="28" x2="70" y2="32"></line><line x1="92" y1="34" x2="92" y2="42"></line><line x1="108" y1="16" x2="114" y2="12"></line><line x1="108" y1="28" x2="114" y2="32"></line>
-              <rect x="24" y="10" width="10" height="46" rx="5"></rect>
+              <line x1="92" y1="4" x2="92" y2="-2" transform="translate(0,3)"></line>
+              <line x1="78" y1="14" x2="72" y2="11" opacity=".5"><animate attributeName="opacity" values=".3;.65;.3" dur="3s" repeatCount="indefinite"/></line>
+              <line x1="78" y1="28" x2="72" y2="31" opacity=".5"><animate attributeName="opacity" values=".65;.3;.65" dur="3s" repeatCount="indefinite"/></line>
+              <line x1="92" y1="34" x2="92" y2="40" opacity=".5"><animate attributeName="opacity" values=".4;.7;.4" dur="2.5s" repeatCount="indefinite"/></line>
+              <line x1="106" y1="14" x2="112" y2="11" opacity=".5"><animate attributeName="opacity" values=".3;.65;.3" dur="3.2s" repeatCount="indefinite"/></line>
+              <line x1="106" y1="28" x2="112" y2="31" opacity=".5"><animate attributeName="opacity" values=".65;.3;.65" dur="2.8s" repeatCount="indefinite"/></line>
+              </g>
+              <path d="M25 11 C 25 10 29 10 33 11 C 34 30 34 44 34 54"></path>
               <circle cx="29" cy="74" r="14"></circle>
-              <line x1="29" y1="24" x2="29" y2="64" stroke-width="4"></line>
-              <path d="M50 78 Q 60 68 70 78 T 90 78" stroke-dasharray="2 4"></path>
-              <path d="M50 88 Q 60 78 70 88 T 90 88" stroke-dasharray="2 4"></path>
+              <path d="M28.5 22 C 28.5 32 28.5 44 28.5 64" stroke-width="3.5"></path>
+              <path d="M50 78 Q 60 68 70 78 T 90 78" stroke-dasharray="2 4"><animateTransform attributeName="transform" type="translate" values="0,0;7,0;0,0" dur="5s" repeatCount="indefinite"/></path>
+              <path d="M50 88 Q 60 78 70 88 T 90 88" stroke-dasharray="2 4"><animateTransform attributeName="transform" type="translate" values="0,0;7,0;0,0" dur="5s" repeatCount="indefinite" begin=".5s"/></path>
             </svg>
             <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(3deg)">click me ↝</div>
           </div>
 
           <div onClick="{{ openFigSensor }}" title="Air quality monitoring" style="{{ sensorWrapStyle }}" style-hover="opacity:.95;transform:rotate(3deg) scale(1.1)">
-            <svg viewBox="0 0 120 110" width="108" height="98" fill="none" stroke="#141414" stroke-width="1.3">
+            <svg viewBox="0 0 120 110" width="108" height="98" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="34" y="18" width="52" height="60" rx="4"></rect>
               <circle cx="60" cy="40" r="10"></circle>
               <line x1="46" y1="58" x2="74" y2="58"></line><line x1="46" y1="66" x2="66" y2="66"></line>
               <line x1="60" y1="78" x2="60" y2="92"></line>
-              <path d="M14 30 Q 26 40 14 50"></path><path d="M8 24 Q 26 40 8 56"></path>
-              <path d="M106 30 Q 94 40 106 50"></path><path d="M112 24 Q 94 40 112 56"></path>
-              <circle cx="94" cy="14" r="2" fill="#141414"></circle><circle cx="100" cy="20" r="1.6" fill="#141414"></circle><circle cx="88" cy="8" r="1.6" fill="#141414"></circle>
+              <path d="M14 30 Q 26 40 14 50"><animate attributeName="d" values="M14 30 Q 26 40 14 50;M10 27 Q 26 40 10 53;M14 30 Q 26 40 14 50" dur="3s" repeatCount="indefinite"/></path>
+              <path d="M8 24 Q 26 40 8 56"><animate attributeName="d" values="M8 24 Q 26 40 8 56;M4 21 Q 26 40 4 59;M8 24 Q 26 40 8 56" dur="3s" repeatCount="indefinite" begin=".3s"/></path>
+              <path d="M106 30 Q 94 40 106 50"><animate attributeName="d" values="M106 30 Q 94 40 106 50;M110 27 Q 94 40 110 53;M106 30 Q 94 40 106 50" dur="3s" repeatCount="indefinite"/></path>
+              <path d="M112 24 Q 94 40 112 56"><animate attributeName="d" values="M112 24 Q 94 40 112 56;M116 21 Q 94 40 116 59;M112 24 Q 94 40 112 56" dur="3s" repeatCount="indefinite" begin=".3s"/></path>
+              <circle cx="94" cy="14" r="2" fill="#141414"><animate attributeName="cy" values="14;10;14" dur="2.5s" repeatCount="indefinite"/></circle>
+              <circle cx="100" cy="20" r="1.6" fill="#141414"><animate attributeName="cy" values="20;15;20" dur="3s" repeatCount="indefinite" begin=".4s"/></circle>
+              <circle cx="88" cy="8" r="1.6" fill="#141414"><animate attributeName="cy" values="8;4;8" dur="2.8s" repeatCount="indefinite" begin=".8s"/></circle>
             </svg>
             <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-4px;transform:rotate(-3deg);text-align:right">click me ↜</div>
           </div>
 
           <div onClick="{{ openFigEnergy }}" title="Energy modeling" style="{{ energyWrapStyle }}" style-hover="opacity:.95;transform:rotate(3deg) scale(1.1)">
-            <svg viewBox="0 0 130 100" width="108" height="84" fill="none" stroke="#141414" stroke-width="1.3">
-              <path d="M20 54 L60 20 L100 54"></path><rect x="30" y="54" width="60" height="36"></rect><line x1="60" y1="20" x2="60" y2="6"></line>
-              <path d="M46 40 L36 62 L52 62 L42 84 L68 56 L54 56 Z" fill="#b6512f" stroke="none" opacity=".8"></path>
+            <svg viewBox="0 0 130 100" width="108" height="84" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 56 C 36 34 48 24 60 20 C 72 24 84 34 98 56"></path><path d="M32 56 L 32 88 C 32 90 34 90 36 90 L 86 90 C 88 90 90 90 90 88 L 90 56"></path><line x1="60" y1="20" x2="60" y2="8"></line>
+              <path d="M46 40 L 36 62 L 52 62 L 42 84 L 68 56 L 54 56 Z" stroke-width="1.4"><animate attributeName="opacity" values=".75;.3;.75" dur="1.5s" repeatCount="indefinite"/></path>
               <circle cx="105" cy="70" r="18"></circle>
               <line x1="105" y1="70" x2="115" y2="60"></line><line x1="105" y1="70" x2="105" y2="56"></line>
             </svg>
@@ -79,32 +89,46 @@
           </div>
 
           <div onClick="{{ openFigPolicy }}" title="Codes &amp; policy" style="{{ policyWrapStyle }}" style-hover="opacity:.95;transform:rotate(-3deg) scale(1.1)">
-            <svg viewBox="0 0 120 100" width="108" height="90" fill="none" stroke="#141414" stroke-width="1.3">
-              <line x1="60" y1="8" x2="60" y2="72"></line>
-              <line x1="24" y1="20" x2="96" y2="20"></line>
-              <path d="M24 20 L10 46 A14 14 0 0 0 38 46 Z"></path>
-              <path d="M96 20 L82 46 A14 14 0 0 0 110 46 Z"></path>
-              <rect x="42" y="72" width="36" height="8"></rect>
-              <rect x="18" y="88" width="84" height="4"></rect>
+            <svg viewBox="0 0 120 100" width="108" height="90" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <g>
+                <animateTransform attributeName="transform" type="rotate" values="0 60 16;-5 60 16;0 60 16;5 60 16;0 60 16" dur="5s" repeatCount="indefinite"/>
+                <line x1="60" y1="16" x2="60" y2="80"></line>
+                <line x1="26" y1="28" x2="94" y2="28" stroke-width="1.4"></line>
+                <circle cx="60" cy="16" r="4"></circle>
+                <g><line x1="26" y1="28" x2="26" y2="52"></line><path d="M12 52 C 14 62 26 62 38 52"></path></g>
+                <g><line x1="94" y1="28" x2="94" y2="48"></line><path d="M80 48 C 82 56 94 56 108 48"></path></g>
+              </g>
+              <path d="M44 80 C 52 78 68 78 76 80"></path>
+              <path d="M20 92 C 40 90 80 90 100 92"></path>
             </svg>
             <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(3deg);text-align:right">click me ↜</div>
           </div>
 
           <div onClick="{{ openFigSolar }}" title="Distributed energy resources" style="{{ solarWrapStyle }}" style-hover="opacity:.95;transform:rotate(-3deg) scale(1.1)">
-            <svg viewBox="0 0 140 100" width="108" height="78" fill="none" stroke="#141414" stroke-width="1.3">
-              <path d="M10 66 L58 30 L106 66 Z"></path><rect x="24" y="66" width="68" height="26"></rect>
-              <g transform="translate(46,36) skewX(-14)"><rect x="0" y="0" width="46" height="20"></rect><line x1="0" y1="7" x2="46" y2="7"></line><line x1="0" y1="14" x2="46" y2="14"></line><line x1="12" y1="0" x2="12" y2="20"></line><line x1="24" y1="0" x2="24" y2="20"></line><line x1="36" y1="0" x2="36" y2="20"></line></g>
-              <circle cx="118" cy="16" r="10"></circle><line x1="118" y1="0" x2="118" y2="4"></line><line x1="132" y1="16" x2="128" y2="16"></line><line x1="127" y1="6" x2="124" y2="9"></line>
+            <svg viewBox="0 0 140 100" width="108" height="78" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="60" y1="80" x2="60" y2="30"></line>
+              <path d="M48 80 C 52 78 68 78 72 80 L 72 84 C 68 86 52 86 48 84 Z"></path>
+              <g transform="translate(60,30)">
+                <g><animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="3s" repeatCount="indefinite"/>
+                  <line x1="0" y1="0" x2="0" y2="-22" stroke-width="1.4"></line>
+                  <line x1="0" y1="0" x2="19" y2="11" stroke-width="1.4"></line>
+                  <line x1="0" y1="0" x2="-19" y2="11" stroke-width="1.4"></line>
+                </g>
+                <circle cx="0" cy="0" r="3"></circle>
+              </g>
+              <path d="M90 40 Q 98 38 106 40" stroke-dasharray="3 3"><animate attributeName="d" values="M90 40 Q 98 38 106 40;M90 43 Q 98 41 106 43;M90 40 Q 98 38 106 40" dur="2.5s" repeatCount="indefinite"/></path>
+              <path d="M92 54 Q 100 52 108 54" stroke-dasharray="3 3"><animate attributeName="d" values="M92 54 Q 100 52 108 54;M92 57 Q 100 55 108 57;M92 54 Q 100 52 108 54" dur="2.8s" repeatCount="indefinite" begin=".4s"/></path>
+              <path d="M88 66 Q 96 64 104 66" stroke-dasharray="3 3"><animate attributeName="d" values="M88 66 Q 96 64 104 66;M88 69 Q 96 67 104 69;M88 66 Q 96 64 104 66" dur="2.3s" repeatCount="indefinite" begin=".8s"/></path>
             </svg>
             <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(2deg)">click me ↝</div>
           </div>
 
           <div onClick="{{ openFigAir }}" title="Ventilation &amp; airflow" style="{{ airWrapStyle }}" style-hover="opacity:.95;transform:rotate(4deg) scale(1.1)">
-            <svg viewBox="0 0 130 100" width="108" height="84" fill="none" stroke="#141414" stroke-width="1.3">
+            <svg viewBox="0 0 130 100" width="108" height="84" fill="none" stroke="#141414" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="14" width="60" height="60"></rect><line x1="50" y1="14" x2="50" y2="74"></line><line x1="20" y1="44" x2="80" y2="44"></line>
-              <path d="M88 30 Q 108 30 108 44 Q 108 58 90 56"></path>
-              <path d="M88 50 Q 116 50 116 66 Q 116 82 94 78"></path>
-              <path d="M88 68 Q 100 68 102 78"></path>
+              <path d="M88 30 Q 108 30 108 44 Q 108 58 90 56"><animate attributeName="d" values="M88 30 Q 108 30 108 44 Q 108 58 90 56;M88 30 Q 116 30 116 44 Q 116 58 96 56;M88 30 Q 108 30 108 44 Q 108 58 90 56" dur="3s" repeatCount="indefinite"/></path>
+              <path d="M88 50 Q 116 50 116 66 Q 116 82 94 78"><animate attributeName="d" values="M88 50 Q 116 50 116 66 Q 116 82 94 78;M88 50 Q 124 50 124 66 Q 124 82 100 78;M88 50 Q 116 50 116 66 Q 116 82 94 78" dur="3.5s" repeatCount="indefinite" begin=".5s"/></path>
+              <path d="M88 68 Q 100 68 102 78"><animate attributeName="d" values="M88 68 Q 100 68 102 78;M88 68 Q 108 68 110 78;M88 68 Q 100 68 102 78" dur="2.8s" repeatCount="indefinite" begin="1s"/></path>
             </svg>
             <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(-2deg);text-align:right">click me ↜</div>
           </div>
@@ -144,20 +168,21 @@
               <line x1="0" y1="260" x2="1200" y2="260" stroke="#141414" stroke-width="2"></line>
             </svg>
             <div style="position:relative;display:flex;align-items:center;gap:14px;margin-bottom:12px;animation:heroin .7s ease-out both">
-              <image-slot id="profile-photo" shape="circle" placeholder="photo" style="width:56px;height:56px"></image-slot>
+              <image-slot id="profile-photo" shape="circle" placeholder="photo" src="./images/profile_pic.png" style="width:56px;height:56px"></image-slot>
               <div style="font:500 22px Newsreader,serif;color:#141414">Aritro De</div>
             </div>
             <div style="position:relative;font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:16px;animation:heroin .7s ease-out .1s both">BUILDING SCIENCE · IEQ · POLICY</div>
             <h1 style="position:relative;font:500 78px/1.02 Newsreader,serif;margin:0 0 20px;color:#141414;max-width:1191px;height:240px;overflow:hidden;animation:heroin .7s ease-out .2s both">{{ typedHeadline }}<span style="animation:blinkcursor 1s step-start infinite">|</span></h1>
             <div style="position: relative; font: 500 14px Inter,sans-serif; color: oklch(45% 0.02 250); margin-bottom: 18px; display: none">Indoor air quality, energy modeling, and building policy.</div>
             <div style="position:relative;display:flex;gap:14px;flex-wrap:wrap;animation:heroin .7s ease-out .3s both">
-              <a href="#" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">GOOGLE SCHOLAR</a>
+              <a href="https://scholar.google.com/citations?user=qfAUQmgAAAAJ&hl=en&authuser=1" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">GOOGLE SCHOLAR</a>
               <a href="https://github.com/aritrode29" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">GITHUB</a>
               <a href="https://www.linkedin.com/in/aritro-de-12207b1a0/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">LINKEDIN</a>
               <a href="https://www.instagram.com/aritro.de/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">INSTAGRAM</a>
-              <a href="#" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">ORCID</a>
+              <a href="https://orcid.org/0000-0003-1965-0348" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">ORCID</a>
+              <a href="#" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">DOWNLOAD CV</a>
             </div>
-            <div style="position:relative;font:400 12.5px Inter,sans-serif;color:#555;margin-top:16px">aritrode12@gmail.com · Austin, TX · <a href="https://www.linkedin.com/in/aritro-de-12207b1a0/" style="color:#b6512f;text-decoration:none">LinkedIn</a></div>
+            <div style="position:relative;font:400 12.5px Inter,sans-serif;color:#555;margin-top:16px">aritrode12@gmail.com · Austin, TX</div>
           </div>
 
           <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #141414;border-bottom:1px solid #141414">
@@ -165,10 +190,16 @@
               <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">FIG. 1–2</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
                 <line x1="2" y1="52" x2="46" y2="52" stroke="#ddd" stroke-width="1"></line><line x1="2" y1="6" x2="2" y2="52" stroke="#ddd" stroke-width="1"></line>
-                <rect x="6" y="34" width="6" height="18" fill="#b6512f"></rect><rect x="16" y="24" width="6" height="28" fill="#b6512f"></rect><rect x="26" y="14" width="6" height="38" fill="#b6512f"></rect><rect x="36" y="8" width="6" height="44" fill="#b6512f"></rect>
+                <rect x="6" y="34" width="6" height="18" fill="#b6512f" transform-origin="9 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="16" y="24" width="6" height="28" fill="#b6512f" transform-origin="19 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.15s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="26" y="14" width="6" height="38" fill="#b6512f" transform-origin="29 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.3s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="36" y="8" width="6" height="44" fill="#b6512f" transform-origin="39 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.45s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
                 <line x1="56" y1="52" x2="98" y2="52" stroke="#ddd" stroke-width="1"></line><line x1="56" y1="6" x2="56" y2="52" stroke="#ddd" stroke-width="1"></line>
-                <polyline points="60,44 70,30 80,34 92,10" fill="none" stroke="#141414" stroke-width="2"></polyline>
-                <circle cx="60" cy="44" r="2.5" fill="#141414"></circle><circle cx="70" cy="30" r="2.5" fill="#141414"></circle><circle cx="80" cy="34" r="2.5" fill="#141414"></circle><circle cx="92" cy="10" r="2.5" fill="#141414"></circle>
+                <polyline points="60,44 70,30 80,34 92,10" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="120" stroke-dashoffset="120"><animate attributeName="stroke-dashoffset" values="120;0;120" dur="4s" repeatCount="indefinite"/></polyline>
+                <circle cx="60" cy="44" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.2;0.7;1"/></circle>
+                <circle cx="70" cy="30" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.3;0.7;1"/></circle>
+                <circle cx="80" cy="34" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.4;0.7;1"/></circle>
+                <circle cx="92" cy="10" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.5;0.7;1"/></circle>
               </svg>
               <div style="font:500 12px Inter,sans-serif;margin-top:10px">Research</div><div style="font:400 10px ui-monospace,monospace;color:#999">two live threads</div>
               <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
@@ -179,7 +210,10 @@
               <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">FIG. 6</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
                 <line x1="6" y1="30" x2="94" y2="30" stroke="oklch(45% 0.02 250)" stroke-width="2"></line>
-                <circle cx="14" cy="30" r="5" fill="oklch(45% 0.02 250)"></circle><circle cx="40" cy="30" r="5" fill="oklch(45% 0.02 250)"></circle><circle cx="66" cy="30" r="5" fill="oklch(45% 0.02 250)"></circle><circle cx="92" cy="30" r="5" fill="#b6512f"></circle>
+                <circle cx="14" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/></circle>
+                <circle cx="40" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="0.75s"/></circle>
+                <circle cx="66" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="1.5s"/></circle>
+                <circle cx="92" cy="30" r="5" fill="#b6512f"><animate attributeName="r" values="3;7;3" dur="2.5s" repeatCount="indefinite"/></circle>
                 <line x1="14" y1="38" x2="14" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="40" y1="38" x2="40" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="66" y1="38" x2="66" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="92" y1="38" x2="92" y2="46" stroke="#ccc" stroke-width="1"></line>
               </svg>
               <div style="font:500 12px Inter,sans-serif;margin-top:10px">Experience</div><div style="font:400 10px ui-monospace,monospace;color:#999">timeline</div>
@@ -193,8 +227,8 @@
                 <rect x="8" y="8" width="84" height="44" fill="none" stroke="#141414" stroke-width="1.5"></rect>
                 <line x1="52" y1="8" x2="52" y2="52" stroke="#141414" stroke-width="1"></line>
                 <line x1="8" y1="34" x2="30" y2="34" stroke="#141414" stroke-width="1"></line>
-                <path d="M52,34 A18,18 0 0 1 70,52" fill="none" stroke="#b6512f" stroke-width="1"></path>
-                <line x1="70" y1="52" x2="52" y2="34" stroke="#b6512f" stroke-width="1"></line>
+                <path d="M52,34 A18,18 0 0 1 70,52" fill="none" stroke="#b6512f" stroke-width="1" stroke-dasharray="60" stroke-dashoffset="60"><animate attributeName="stroke-dashoffset" values="60;0;60" dur="3s" repeatCount="indefinite"/></path>
+                <line x1="70" y1="52" x2="52" y2="34" stroke="#b6512f" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></line>
               </svg>
               <div style="font:500 12px Inter,sans-serif;margin-top:10px">Projects</div><div style="font:400 10px ui-monospace,monospace;color:#999">architecture</div>
               <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
@@ -209,7 +243,8 @@
                 <line x1="6" y1="34" x2="94" y2="34" stroke="#ddd" stroke-width="1"></line>
                 <line x1="6" y1="44" x2="94" y2="44" stroke="#ddd" stroke-width="1"></line>
                 <line x1="66" y1="8" x2="66" y2="52" stroke="#ddd" stroke-width="1"></line>
-                <circle cx="76" cy="28" r="2" fill="#b6512f"></circle>
+                <rect x="6" y="22" width="88" height="12" fill="#b6512f" opacity="0"><animate attributeName="opacity" values="0;0.25;0" dur="3s" repeatCount="indefinite"/></rect>
+                <circle cx="76" cy="28" r="2" fill="#b6512f"><animate attributeName="r" values="1.5;3.5;1.5" dur="2s" repeatCount="indefinite"/></circle>
               </svg>
               <div style="font:500 12px Inter,sans-serif;margin-top:10px">Publications</div><div style="font:400 10px ui-monospace,monospace;color:#999">6 papers</div>
               <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
@@ -414,6 +449,7 @@
               </sc-for>
             </div>
             <div style="margin-top:14px;padding-top:10px;border-top:1px solid #141414"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 7.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">Selected projects, (a)–(f): ORD International School, Reconnect!, Tending the Flow, Harmony Heights, Pune Residence, and Delhi Residence.</span></div>
+            <div style="margin-top:12px"><a href="./Projects.html" style="font:500 11px ui-monospace,monospace;letter-spacing:.06em;color:#b6512f;text-decoration:none">VIEW ALL PROJECTS →</a></div>
           </div>
 
           <div id="2a-skills" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealSkills }}">
@@ -499,14 +535,48 @@
           </div>
 
           <div style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12)">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:12px">CURRENTLY READING</div>
-            <div style="font:400 13px/1.7 Inter,sans-serif;color:#444;margin-bottom:8px">Currently reading / recently read: <i>The Warren Buffett Way</i>, <i>The Little Book That Beats the Market</i>, <i>Fooled by Randomness</i>.</div>
-            <a href="https://aritrode.com/reading-list/" style="font:500 11px ui-monospace,monospace;color:#b6512f;text-decoration:none">MY FULL READING LIST →</a>
+            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:20px">CURRENTLY READING</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+              <div>
+                <div style="font:400 12px ui-monospace,monospace;color:#999;margin-bottom:8px">NOW READING</div>
+                <div style="font:500 20px/1.4 Newsreader,serif;color:#141414;margin-bottom:4px"><a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.15);transition:border-color .15s" style-hover="border-color:#b6512f">The Bell Jar</a></div>
+                <div style="font:400 13px Inter,sans-serif;color:#666;margin-bottom:14px">Sylvia Plath · 1963</div>
+                <blockquote style="font:italic 400 15px/1.7 Newsreader,serif;color:#888;border-left:2px solid #b6512f;padding-left:16px;margin:0 0 18px">"That afternoon my mother had brought me the roses. 'Save them for my funeral,' I'd said."</blockquote>
+                <div style="display:flex;gap:12px">
+                  <a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#b6512f;border:1px solid rgba(182,81,47,.3);padding:6px 12px;transition:all .15s" style-hover="background:#b6512f;color:#fff">GOODREADS →</a>
+                  <a href="https://aritrode.com/reading-list/" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#141414;border:1px solid rgba(0,0,0,.15);padding:6px 12px;transition:all .15s" style-hover="border-color:#b6512f;color:#b6512f">FULL READING LIST →</a>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:center;align-items:center;min-height:180px">
+                <svg viewBox="0 0 160 180" width="160" height="180" fill="none" stroke="#141414" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M44 160 C 44 100 52 70 80 44 C 108 70 116 100 116 160"></path>
+                  <path d="M38 160 L 122 160"></path>
+                  <path d="M34 160 C 34 164 36 166 40 166 L 120 166 C 124 166 126 164 126 160"></path>
+                  <g>
+                    <path d="M76 94 C 70 82 72 88 66 94 C 70 100 76 96 76 94 C 76 96 82 100 86 94 C 80 88 82 82 76 94" stroke-width=".7">
+                      <animate attributeName="d" values="M76 94 C 70 82 72 88 66 94 C 70 100 76 96 76 94 C 76 96 82 100 86 94 C 80 88 82 82 76 94;M76 94 C 68 78 70 88 62 94 C 68 102 76 98 76 94 C 76 98 84 102 90 94 C 82 88 84 78 76 94;M76 94 C 70 82 72 88 66 94 C 70 100 76 96 76 94 C 76 96 82 100 86 94 C 80 88 82 82 76 94" dur="1.4s" repeatCount="indefinite"/>
+                    </path>
+                    <circle r="1.5" fill="#141414" stroke="none"></circle>
+                    <line x1="0" y1="-8" x2="-2" y2="-14" stroke-width=".5"></line>
+                    <line x1="0" y1="-8" x2="2" y2="-14" stroke-width=".5"></line>
+                  </g>
+                  <circle cx="58" cy="100" r=".8" fill="#141414" stroke="none" opacity=".25"><animate attributeName="cy" values="100;150;100" dur="7s" repeatCount="indefinite"/></circle>
+                  <circle cx="96" cy="112" r=".6" fill="#141414" stroke="none" opacity=".18"><animate attributeName="cy" values="112;154;112" dur="8s" repeatCount="indefinite" begin="2s"/></circle>
+                  <g transform="translate(62,154)">
+                    <line x1="0" y1="0" x2="-1" y2="-8" stroke-width=".7"></line>
+                    <circle cx="-2" cy="-9" r="1.8" stroke-width=".6"><animateTransform attributeName="transform" type="rotate" values="-4 0 0;4 0 0;-4 0 0" dur="3.5s" repeatCount="indefinite"/></circle>
+                  </g>
+                  <g transform="translate(98,154)">
+                    <line x1="0" y1="0" x2="1" y2="-7" stroke-width=".7"></line>
+                    <circle cx="2" cy="-8" r="1.5" stroke-width=".6"><animateTransform attributeName="transform" type="rotate" values="3 0 0;-3 0 0;3 0 0" dur="4s" repeatCount="indefinite"/></circle>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </div>
 
           <div id="2a-contact" style="padding:44px 60px 60px;display:flex;justify-content:space-between;align-items:center;transition:opacity .7s ease,transform .7s ease;{{ revealContact }}">
-            <div style="font:400 13px Inter,sans-serif;color:#333">aritrode12@gmail.com · Austin, TX · <a href="https://www.linkedin.com/in/aritro-de-12207b1a0/" style="color:#b6512f">LinkedIn</a></div>
-            <a href="#" style="text-decoration:none;font:500 12px Inter,sans-serif;padding:10px 18px;background:#141414;color:#fff;border-radius:2px">Download CV (PDF)</a>
+            <div style="font:400 13px Inter,sans-serif;color:#333">aritrode12@gmail.com · Austin, TX</div>
           </div>
 </div>
 
@@ -571,7 +641,7 @@ const TOOLS_DATA = [
 ];
 
 const ICON_RANGES = {
-  thermo: { topMin: 200, topMax: 220, leftMin: 935, leftMax: 955 },
+  thermo: { topMin: 1040, topMax: 1060, leftMin: 985, leftMax: 1005 },
   sensor: { topMin: 777, topMax: 797, leftMin: 905, leftMax: 925 },
   energy: { topMin: 1774, topMax: 1794, leftMin: 20, leftMax: 40 },
   policy: { topMin: 2390, topMax: 2410, leftMin: 785, leftMax: 805 },
