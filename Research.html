@@ -50,7 +50,7 @@
   <!-- PUBLISHED -->
   <div id="published" data-popup-scope="" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);position:relative;overflow:visible;transition:opacity .7s ease,transform .7s ease;{{ revealPublished }}">
 
-    <div onClick="{{ openFan }}" title="Why 0.2 m/s?" style="position:absolute;top:8px;right:120px;width:76px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2" style-hover="opacity:1">
+    <div onClick="{{ openFan }}" title="Why 0.2 m/s?" style="position:absolute;top:14px;right:20px;width:76px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(4deg)" style-hover="opacity:1">
       <svg viewBox="0 0 120 120" width="76" height="76" fill="none" stroke="#141414" stroke-width="1.3">
         <ellipse cx="60" cy="30" rx="9" ry="20"></ellipse>
         <ellipse cx="60" cy="30" rx="9" ry="20" transform="rotate(90 60 60)"></ellipse>
@@ -61,7 +61,7 @@
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-4px">click me</div>
     </div>
 
-    <div onClick="{{ openThermo }}" title="What is IMAC?" style="position:absolute;top:4px;right:20px;width:70px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(6deg)" style-hover="opacity:1">
+    <div onClick="{{ openThermo }}" title="What is IMAC?" style="position:absolute;top:180px;left:20px;width:70px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-6deg)" style-hover="opacity:1">
       <svg viewBox="0 0 120 96" width="70" height="56" fill="none" stroke="#141414" stroke-width="1.3">
         <rect x="24" y="10" width="10" height="46" rx="5"></rect>
         <circle cx="29" cy="74" r="14"></circle>
@@ -69,6 +69,25 @@
         <path d="M50 78 Q 60 68 70 78 T 90 78" stroke-dasharray="2 4"></path>
       </svg>
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-6px">click me</div>
+    </div>
+
+    <div onClick="{{ openWind }}" title="Why does air speed matter?" style="position:absolute;top:340px;right:20px;width:72px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(3deg)" style-hover="opacity:1">
+      <svg viewBox="0 0 100 70" width="72" height="50" fill="none" stroke="#141414" stroke-width="1.3">
+        <path d="M8 16 C 28 6 48 26 68 16"></path><path d="M68 16 L 62 20 M68 16 L 62 12"></path>
+        <path d="M8 35 C 28 25 48 45 68 35"></path><path d="M68 35 L 62 39 M68 35 L 62 31"></path>
+        <path d="M8 54 C 28 44 48 64 68 54"></path><path d="M68 54 L 62 58 M68 54 L 62 50"></path>
+      </svg>
+      <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
+    </div>
+
+    <div onClick="{{ openBuilding }}" title="What is an institutional building?" style="position:absolute;bottom:200px;left:20px;width:68px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-3deg)" style-hover="opacity:1">
+      <svg viewBox="0 0 100 80" width="68" height="54" fill="none" stroke="#141414" stroke-width="1.3">
+        <path d="M8 28 L50 8 L92 28"></path><rect x="14" y="28" width="72" height="44"></rect>
+        <line x1="24" y1="28" x2="24" y2="72"></line><line x1="38" y1="28" x2="38" y2="72"></line>
+        <line x1="52" y1="28" x2="52" y2="72"></line><line x1="66" y1="28" x2="66" y2="72"></line>
+        <line x1="8" y1="72" x2="92" y2="72"></line>
+      </svg>
+      <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-4px">click me</div>
     </div>
 
     <sc-if value="{{ popupOpenPublished }}" hint-placeholder-val="{{ false }}">
@@ -174,13 +193,36 @@
           <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:56px">{{ fan2Caption }}</div>
         </div>
       </div>
+
+      <div style="border-top:1px solid #141414;padding:22px 28px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+          <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em">FIG. 3 &middot; THERMAL ACCEPTABILITY vs. FAN SPEED</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:0;height:140px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:36px;position:relative">
+          <div style="position:absolute;left:0;bottom:0;top:0;width:36px;border-right:1px solid rgba(0,0,0,.15);display:flex;flex-direction:column;justify-content:space-between;padding:0 4px">
+            <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">100%</div>
+            <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">75%</div>
+            <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">50%</div>
+            <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">25%</div>
+            <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">0%</div>
+          </div>
+          <sc-for list="{{ airSpeedBars }}" as="bar" hint-placeholder-count="4">
+            <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;cursor:pointer;position:relative">
+              <div style="font:500 11px Inter,sans-serif;color:{{ bar.textColor }};transition:color .15s">{{ bar.pct }}%</div>
+              <div style="width:60%;background:{{ bar.color }};height:{{ bar.h }}%;transition:all .2s;transform-origin:bottom;animation:growbar .6s ease-out both" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
+              <div style="font:400 9px ui-monospace,monospace;color:#888;margin-top:2px">{{ bar.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:40px">{{ airSpeedCaption }}</div>
+      </div>
     </div>
   </div>
 
   <!-- IN WORK -->
   <div id="inwork" data-popup-scope="" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);position:relative;overflow:visible;transition:opacity .7s ease,transform .7s ease;{{ revealInwork }}">
 
-    <div onClick="{{ openFence }}" title="What's a fenceline community?" style="position:absolute;top:8px;right:110px;width:78px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-4deg)" style-hover="opacity:1">
+    <div onClick="{{ openFence }}" title="What's a fenceline community?" style="position:absolute;top:14px;left:20px;width:78px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(5deg)" style-hover="opacity:1">
       <svg viewBox="0 0 130 100" width="78" height="60" fill="none" stroke="#141414" stroke-width="1.3">
         <path d="M12 60 L32 44 L52 60 Z"></path><rect x="18" y="60" width="28" height="20"></rect>
         <rect x="76" y="30" width="14" height="50"></rect><rect x="96" y="42" width="14" height="38"></rect>
@@ -189,10 +231,32 @@
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
     </div>
 
-    <div onClick="{{ openGrid }}" title="Why ERCOT?" style="position:absolute;top:4px;right:16px;width:72px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(3deg)" style-hover="opacity:1">
+    <div onClick="{{ openGrid }}" title="Why ERCOT?" style="position:absolute;top:260px;right:20px;width:72px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-4deg)" style-hover="opacity:1">
       <svg viewBox="0 0 120 100" width="72" height="60" fill="none" stroke="#141414" stroke-width="1.3">
         <circle cx="60" cy="20" r="7"></circle><circle cx="20" cy="60" r="7"></circle><circle cx="100" cy="60" r="7"></circle><circle cx="60" cy="90" r="7"></circle>
         <line x1="60" y1="27" x2="20" y2="53"></line><line x1="60" y1="27" x2="100" y2="53"></line><line x1="20" y1="67" x2="60" y2="83"></line><line x1="100" y1="67" x2="60" y2="83"></line>
+      </svg>
+      <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
+    </div>
+
+    <div onClick="{{ openFactory }}" title="What is a petrochemical corridor?" style="position:absolute;bottom:180px;right:20px;width:78px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(2deg)" style-hover="opacity:1">
+      <svg viewBox="0 0 120 90" width="78" height="58" fill="none" stroke="#141414" stroke-width="1.3">
+        <rect x="8" y="36" width="26" height="44"></rect><rect x="40" y="18" width="18" height="62"></rect>
+        <rect x="64" y="28" width="14" height="52"></rect><rect x="84" y="36" width="12" height="44"></rect>
+        <path d="M21 36 Q 21 24 28 18" stroke-dasharray="2 3"></path>
+        <path d="M49 18 Q 49 8 54 2" stroke-dasharray="2 3"></path>
+        <path d="M71 28 Q 71 18 76 10" stroke-dasharray="2 3"></path>
+      </svg>
+      <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
+    </div>
+
+    <div onClick="{{ openFilter }}" title="What is portable filtration?" style="position:absolute;top:340px;left:20px;width:56px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-7deg)" style-hover="opacity:1">
+      <svg viewBox="0 0 90 90" width="56" height="56" fill="none" stroke="#141414" stroke-width="1.3">
+        <rect x="15" y="20" width="60" height="50" rx="6"></rect>
+        <line x1="15" y1="35" x2="75" y2="35"></line><line x1="15" y1="50" x2="75" y2="50"></line>
+        <path d="M5 35 Q 0 35 0 42 Q 0 50 5 50" stroke-dasharray="2 2"></path>
+        <path d="M85 35 Q 90 35 90 42 Q 90 50 85 50" stroke-dasharray="2 2"></path>
+        <circle cx="45" cy="42" r="6" stroke-dasharray="2 2"></circle>
       </svg>
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
     </div>
@@ -275,6 +339,27 @@
       </div>
     </div>
 
+    <div style="border:1px solid #141414;margin-bottom:24px;padding:22px 28px">
+      <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIG. 5 &middot; CODE SUFFICIENCY BY SCENARIO, COUNTYWIDE MEDIAN</div>
+      <div style="display:flex;align-items:flex-end;gap:0;height:160px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:36px;position:relative">
+        <div style="position:absolute;left:0;bottom:0;top:0;width:36px;border-right:1px solid rgba(0,0,0,.15);display:flex;flex-direction:column;justify-content:space-between;padding:0 4px">
+          <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">100%</div>
+          <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">75%</div>
+          <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">50%</div>
+          <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">25%</div>
+          <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">0%</div>
+        </div>
+        <sc-for list="{{ cspBars }}" as="bar" hint-placeholder-count="5">
+          <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;cursor:pointer;position:relative">
+            <div style="font:500 11px Inter,sans-serif;color:{{ bar.textColor }};transition:color .15s">{{ bar.label }}</div>
+            <div style="width:70%;background:{{ bar.color }};height:{{ bar.h }}%;transition:all .2s;transform-origin:bottom;animation:growbar .6s ease-out both" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
+            <div style="font:400 8px ui-monospace,monospace;color:#888;margin-top:2px;text-align:center;line-height:1.3;max-width:80px">{{ bar.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:40px">{{ cspCaption }}</div>
+    </div>
+
     <div style="border:1px solid rgba(0,0,0,.15);padding:24px;display:flex;gap:20px;align-items:center">
       <svg viewBox="0 0 140 100" width="90" height="66" fill="none" stroke="#141414" stroke-width="1.3" style="flex:none">
         <path d="M10 66 L58 30 L106 66 Z"></path><rect x="24" y="66" width="68" height="26"></rect>
@@ -291,7 +376,7 @@
   <!-- PROJECT & CLASS WORK -->
   <div id="classwork" data-popup-scope="" style="padding:44px 60px 60px;transition:opacity .7s ease,transform .7s ease;{{ revealClasswork }};position:relative;overflow:visible">
 
-    <div onClick="{{ openNeural }}" title="What is neuro-symbolic AI?" style="position:absolute;top:8px;right:120px;width:78px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-3deg)" style-hover="opacity:1">
+    <div onClick="{{ openNeural }}" title="What is neuro-symbolic AI?" style="position:absolute;top:12px;left:20px;width:78px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(-5deg)" style-hover="opacity:1">
       <svg viewBox="0 0 120 100" width="78" height="65" fill="none" stroke="#141414" stroke-width="1.3">
         <circle cx="20" cy="20" r="7"></circle><circle cx="20" cy="50" r="7"></circle><circle cx="20" cy="80" r="7"></circle>
         <circle cx="60" cy="30" r="7"></circle><circle cx="60" cy="70" r="7"></circle>
@@ -304,7 +389,7 @@
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-4px">click me</div>
     </div>
 
-    <div onClick="{{ openDice }}" title="What is a Monte Carlo simulation?" style="position:absolute;top:4px;right:16px;width:72px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(5deg)" style-hover="opacity:1">
+    <div onClick="{{ openDice }}" title="What is a Monte Carlo simulation?" style="position:absolute;top:180px;right:20px;width:72px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(6deg)" style-hover="opacity:1">
       <svg viewBox="0 0 100 90" width="72" height="65" fill="none" stroke="#141414" stroke-width="1.3">
         <rect x="10" y="10" width="36" height="36" rx="4"></rect>
         <circle cx="20" cy="20" r="2.5" fill="#141414" stroke="none"></circle>
@@ -320,6 +405,17 @@
         <circle cx="80" cy="52" r="2.5" fill="#141414" stroke="none"></circle>
       </svg>
       <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-2px">click me</div>
+    </div>
+
+    <div onClick="{{ openChart }}" title="What is feature importance?" style="position:absolute;bottom:120px;left:20px;width:68px;cursor:pointer;opacity:.4;transition:opacity .2s;z-index:2;transform:rotate(3deg)" style-hover="opacity:1">
+      <svg viewBox="0 0 100 80" width="68" height="54" fill="none" stroke="#141414" stroke-width="1.3">
+        <line x1="10" y1="70" x2="90" y2="70"></line><line x1="10" y1="10" x2="10" y2="70"></line>
+        <rect x="20" y="42" width="10" height="28" fill="#b6512f" opacity=".3"></rect>
+        <rect x="36" y="26" width="10" height="44" fill="#b6512f" opacity=".5"></rect>
+        <rect x="52" y="16" width="10" height="54" fill="#b6512f" opacity=".7"></rect>
+        <rect x="68" y="32" width="10" height="38" fill="#b6512f" opacity=".4"></rect>
+      </svg>
+      <div style="font:italic 500 11px Newsreader,serif;color:#b6512f;text-align:center;margin-top:-4px">click me</div>
     </div>
 
     <sc-if value="{{ popupOpenClasswork }}" hint-placeholder-val="{{ false }}">
@@ -346,7 +442,22 @@
         <div style="font:400 13px/1.65 Inter,sans-serif;color:#444;margin-bottom:12px">Built a machine learning model to predict indoor temperature in mixed-mode buildings, cutting modeled cooling loads by up to 60 percent relative to a conservative baseline.</div>
         <div style="font:500 11px ui-monospace,monospace;color:#141414;padding:5px 10px;border:1px solid rgba(0,0,0,.2);display:inline-block">BEST PAPER AWARD &middot; FARU 2022</div>
         <sc-if value="{{ iihsOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12);font:400 12.5px/1.65 Inter,sans-serif;color:#555">The model used random forest and gradient boosting regressors trained on field-measured indoor temperature, outdoor conditions, and occupancy patterns from mixed-mode institutional buildings in New Delhi. Feature importance analysis revealed that outdoor temperature and relative humidity were the dominant predictors, while ceiling fan state provided a secondary but consistent reduction in predicted cooling load. The 60 percent reduction in estimated cooling load came from replacing a conservative fixed-setpoint baseline with the data-driven model&rsquo;s more accurate representation of actual thermal behavior.</div>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12);font:400 12.5px/1.65 Inter,sans-serif;color:#555;margin-bottom:16px">The model used random forest and gradient boosting regressors trained on field-measured indoor temperature, outdoor conditions, and occupancy patterns from mixed-mode institutional buildings in New Delhi. Feature importance analysis revealed that outdoor temperature and relative humidity were the dominant predictors, while ceiling fan state provided a secondary but consistent reduction in predicted cooling load. The 60 percent reduction in estimated cooling load came from replacing a conservative fixed-setpoint baseline with the data-driven model&rsquo;s more accurate representation of actual thermal behavior.</div>
+          <div style="border:1px solid rgba(0,0,0,.15);padding:16px">
+            <div style="font:400 9px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:12px">FEATURE IMPORTANCE &middot; GRADIENT BOOSTING</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ featureBars }}" as="bar" hint-placeholder-count="5">
+                <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;align-items:center;gap:10px;cursor:pointer">
+                  <div style="font:400 10px ui-monospace,monospace;color:#555;width:110px;text-align:right;flex:none">{{ bar.name }}</div>
+                  <div style="flex:1;height:18px;background:rgba(0,0,0,.04);position:relative;overflow:hidden">
+                    <div style="height:100%;background:{{ bar.color }};width:{{ bar.w }}%;transition:all .3s;transform-origin:left" style-hover="opacity:.7"></div>
+                  </div>
+                  <div style="font:500 10px ui-monospace,monospace;color:{{ bar.textColor }};width:36px;flex:none;transition:color .15s">{{ bar.pct }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,.08);font:400 11px/1.5 Newsreader,serif;font-style:italic;color:#666;min-height:32px">{{ featureCaption }}</div>
+          </div>
         </sc-if>
       </div>
       <div onClick="{{ toggleUt }}" style="border:1px solid rgba(0,0,0,.15);padding:24px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s" style-hover="border-color:#b6512f;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)">
@@ -358,7 +469,28 @@
         <div style="font:400 13px/1.65 Inter,sans-serif;color:#444;margin-bottom:12px">A Monte Carlo analysis combining energy and air quality simulation to estimate exposure uncertainty across housing archetypes, the methodological groundwork for the code sufficiency paper above.</div>
         <div style="font:500 11px ui-monospace,monospace;color:#141414;padding:5px 10px;border:1px solid rgba(0,0,0,.2);display:inline-block">COURSE + RESEARCH PROJECT</div>
         <sc-if value="{{ utOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12);font:400 12.5px/1.65 Inter,sans-serif;color:#555">Used 10,000 Monte Carlo iterations to propagate uncertainty in infiltration rates, emission factors, and building envelope properties through a coupled CONTAM/EnergyPlus simulation pipeline. The analysis quantified how indoor PM2.5 and VOC concentrations vary across eight housing archetypes spanning four code eras, revealing that pre-1980 homes have both the highest median exposure and the widest uncertainty band. This probabilistic framework became the methodological foundation for the Code Sufficiency Probability metric used in the published IAQ paper.</div>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12);font:400 12.5px/1.65 Inter,sans-serif;color:#555;margin-bottom:16px">Used 10,000 Monte Carlo iterations to propagate uncertainty in infiltration rates, emission factors, and building envelope properties through a coupled CONTAM/EnergyPlus simulation pipeline. The analysis quantified how indoor PM2.5 and VOC concentrations vary across eight housing archetypes spanning four code eras, revealing that pre-1980 homes have both the highest median exposure and the widest uncertainty band. This probabilistic framework became the methodological foundation for the Code Sufficiency Probability metric used in the published IAQ paper.</div>
+          <div style="border:1px solid rgba(0,0,0,.15);padding:16px">
+            <div style="font:400 9px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:12px">PM2.5 EXPOSURE DISTRIBUTION &middot; 10,000 ITERATIONS</div>
+            <div style="display:flex;align-items:flex-end;gap:2px;height:100px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:32px;position:relative">
+              <div style="position:absolute;left:0;bottom:0;top:0;width:32px;border-right:1px solid rgba(0,0,0,.15);display:flex;flex-direction:column;justify-content:space-between;padding:0 3px">
+                <div style="font:400 7px ui-monospace,monospace;color:#888;text-align:right">high</div>
+                <div style="font:400 7px ui-monospace,monospace;color:#888;text-align:right">low</div>
+              </div>
+              <sc-for list="{{ mcBins }}" as="bin" hint-placeholder-count="10">
+                <div onMouseEnter="{{ bin.enter }}" onMouseLeave="{{ bin.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;cursor:pointer;position:relative">
+                  <div style="font:400 8px ui-monospace,monospace;color:#888;position:absolute;top:-14px;white-space:nowrap">{{ bin.count }}</div>
+                  <div style="width:100%;background:{{ bin.color }};height:{{ bin.h }}%;transition:all .2s;transform-origin:bottom" style-hover="opacity:.7;transform:scaleY(1.06)"></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-left:32px;margin-top:4px">
+              <div style="font:400 8px ui-monospace,monospace;color:#888">0 &micro;g/m&sup3;</div>
+              <div style="font:400 8px ui-monospace,monospace;color:#888">50</div>
+              <div style="font:400 8px ui-monospace,monospace;color:#888">100+</div>
+            </div>
+            <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,.08);font:400 11px/1.5 Newsreader,serif;font-style:italic;color:#666;min-height:32px">{{ mcCaption }}</div>
+          </div>
         </sc-if>
       </div>
     </div>
@@ -397,11 +529,16 @@ const POPUP_INFO = {
   fence: { label: "WHAT'S A FENCELINE COMMUNITY?", title: 'Living next to the source', body: 'A neighborhood that sits directly adjacent to industrial facilities, refineries, or ports, close enough that outdoor air quality is shaped by one identifiable source rather than general urban background pollution. Beaumont-Port Arthur sits inside one of the densest refining corridors in the US.' },
   grid: { label: 'WHY ERCOT?', title: 'A grid on its own island', body: "ERCOT runs the electric grid for about 90% of Texas and, unusually for the US, is largely disconnected from neighboring grids. That isolation makes it a clean case study for how distributed resources like rooftop solar behave inside one self-contained market." },
   neural: { label: 'WHAT IS NEURO-SYMBOLIC AI?', title: 'When neural nets meet rules', body: "Neuro-symbolic AI combines the pattern-recognition strength of neural networks with the logical reasoning of symbolic systems. In building compliance, a neural net can extract structured data from floor plans while a rules engine checks it against code requirements \u2014 getting the best of both approaches." },
-  dice: { label: 'WHAT IS A MONTE CARLO SIMULATION?', title: 'Rolling the dice ten thousand times', body: "A Monte Carlo method runs a model thousands of times with randomly sampled inputs to map out the range of possible outcomes. Instead of getting one answer, you get a probability distribution \u2014 essential when inputs like infiltration rates or emission factors are uncertain and you need to know how confident you can be." }
+  dice: { label: 'WHAT IS A MONTE CARLO SIMULATION?', title: 'Rolling the dice ten thousand times', body: "A Monte Carlo method runs a model thousands of times with randomly sampled inputs to map out the range of possible outcomes. Instead of getting one answer, you get a probability distribution \u2014 essential when inputs like infiltration rates or emission factors are uncertain and you need to know how confident you can be." },
+  wind: { label: 'WHY DOES AIR SPEED MATTER?', title: 'The cooling you can\u2019t simulate', body: "At 0.2 m/s, air movement enhances evaporative cooling on skin without creating a noticeable draft. ASHRAE 55 credits this effect by widening the acceptable temperature range. Above that speed, occupants report disturbance \u2014 papers rustling, hair blowing \u2014 before they report feeling cooler, which is why fan speed control matters more than raw airflow." },
+  building: { label: 'WHAT IS AN INSTITUTIONAL BUILDING?', title: 'Not a home, not an office', body: "Schools, universities, hospitals, and government buildings. They share characteristics that residential buildings don\u2019t: high occupancy density, long daytime hours, large internal heat gains from equipment and people, and often mechanical ventilation systems that can be paired with ceiling fans for hybrid cooling." },
+  factory: { label: 'WHAT IS A PETROCHEMICAL CORRIDOR?', title: 'Refineries all the way down', body: "The Houston Ship Channel to Beaumont-Port Arthur is one of the densest refining corridors in the world. Communities sitting along this fenceline are exposed to elevated levels of VOCs, PM2.5, and hazardous air pollutants from flare events, tank breathing losses, and fugitive emissions \u2014 making outdoor air quality a defining factor in indoor health." },
+  filter: { label: 'WHAT IS PORTABLE FILTRATION?', title: 'A cheap fix that works', body: "A portable HEPA or MERV-13 air cleaner placed in a single room can reduce indoor PM2.5 by 25% or more, at a fraction of the cost of whole-building weatherization. The catch: it doesn\u2019t address VOC infiltration from outdoor sources, and it only protects the room it\u2019s in \u2014 making it a targeted intervention, not a substitute for better building envelopes." },
+  chart: { label: 'WHAT IS FEATURE IMPORTANCE?', title: 'Which variable actually matters?', body: "In a random forest or gradient boosting model, feature importance measures how much each input variable contributes to prediction accuracy. For indoor temperature models, outdoor temperature and humidity dominate, while ceiling fan state and occupancy patterns provide secondary but consistent signal \u2014 a ranking that tells you where to focus design interventions." }
 };
 
 class Component extends DCLogic {
-  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {}, typedLen: 0, headlineIdx: 0 };
+  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {}, typedLen: 0, headlineIdx: 0, airSpeedHover: null, cspHover: null, featureHover: null, mcHover: null };
 
   componentDidMount() {
     let n = 0;
@@ -469,6 +606,59 @@ class Component extends DCLogic {
       { name: 'PM2.5', desc: 'An enforcement and delivery problem \u2014 responds to filtration when matched to the housing stock.' },
       { name: 'VOCs', desc: 'A structural insufficiency problem \u2014 limited by ambient source concentration, not ventilation rate.' }
     ].map((r, i) => ({ ...r, enter: () => this.setState({ pollutantHover: i }), leave: () => this.setState({ pollutantHover: null }) }));
+    const AIR_SPEED_NOTES = {
+      0: 'At 0 m/s (no fan), 66% of occupants reported thermal acceptability under the IMAC adaptive model in the New Delhi field study.',
+      1: 'At 0.1 m/s, acceptability climbs to 82% \u2014 a noticeable improvement, but still below the peak.',
+      2: 'At 0.2 m/s, acceptability peaks at 100% \u2014 the optimal speed where cooling is felt without draft disturbance.',
+      3: 'At 0.3 m/s, acceptability drops to 91% as occupants begin reporting paper disturbance and draft sensation.'
+    };
+    const airSpeedData = [
+      { label: '0 m/s', pct: 66, h: 66, color: '#141414' },
+      { label: '0.1 m/s', pct: 82, h: 82, color: '#888' },
+      { label: '0.2 m/s', pct: 100, h: 100, color: '#b6512f' },
+      { label: '0.3 m/s', pct: 91, h: 91, color: '#888' }
+    ].map((b, i) => ({ ...b, textColor: this.state.airSpeedHover === i ? '#b6512f' : '#141414', enter: () => this.setState({ airSpeedHover: i }), leave: () => this.setState({ airSpeedHover: null }) }));
+    const CSP_NOTES = {
+      0: 'Current conditions: no tract achieves joint PM2.5 + VOC sufficiency. The median countywide CSP sits at 30%.',
+      1: 'Weatherization only: statistically indistinguishable from current conditions (\u0394CSP \u2248 0). Envelope sealing alone cannot address outdoor-source infiltration.',
+      2: 'Portable filtration: a 25% CSP improvement at roughly 1/40th the per-resident capital cost of weatherization.',
+      3: 'Filtration + weatherization: modest additional gain over filtration alone, suggesting diminishing returns from combined interventions.',
+      4: 'New build code (Scenario E): the ceiling for what code can achieve. Still leaves 27% of fenceline tracts above the health benchmark \u2014 ambient VOC concentration is the binding constraint.'
+    };
+    const cspData = [
+      { name: 'CURRENT', label: '30%', h: 30, color: '#141414' },
+      { name: 'WEATHERIZE', label: '30%', h: 30, color: '#888' },
+      { name: 'FILTER', label: '55%', h: 55, color: '#b6512f' },
+      { name: 'FILTER+', label: '58%', h: 58, color: '#b6512f' },
+      { name: 'NEW BUILD', label: '73%', h: 73, color: '#141414' }
+    ].map((b, i) => ({ ...b, textColor: this.state.cspHover === i ? '#b6512f' : '#141414', enter: () => this.setState({ cspHover: i }), leave: () => this.setState({ cspHover: null }) }));
+    const FEATURE_NOTES = {
+      0: 'Outdoor temperature is the dominant predictor of indoor temperature, accounting for 42% of model feature importance.',
+      1: 'Relative humidity is the second strongest signal at 28%, reflecting the enthalpy coupling between outdoor and indoor air.',
+      2: 'Occupancy count contributes 12% \u2014 internal heat gains from people are significant in high-density institutional spaces.',
+      3: 'Ceiling fan state adds 9%, capturing the secondary cooling effect that static simulations miss.',
+      4: 'Hour of day (6%) and building age (3%) provide minor but consistent signal through solar gain and envelope degradation patterns.'
+    };
+    const featureData = [
+      { name: 'OUTDOOR TEMP', pct: '42%', w: 84, color: '#b6512f' },
+      { name: 'REL. HUMIDITY', pct: '28%', w: 56, color: '#b6512f' },
+      { name: 'OCCUPANCY', pct: '12%', w: 24, color: '#888' },
+      { name: 'FAN STATE', pct: '9%', w: 18, color: '#888' },
+      { name: 'HOUR OF DAY', pct: '6%', w: 12, color: '#ccc' },
+      { name: 'BUILDING AGE', pct: '3%', w: 6, color: '#ccc' }
+    ].map((b, i) => ({ ...b, textColor: this.state.featureHover === i ? '#b6512f' : '#555', enter: () => this.setState({ featureHover: i }), leave: () => this.setState({ featureHover: null }) }));
+    const mcNotes = [
+      'Pre-1980 homes show the highest median PM2.5 exposure (42 \u00b5g/m\u00b3) with the widest 90th-percentile spread.',
+      '1980\u20132000 code-era homes cluster around 28 \u00b5g/m\u00b3, with moderate uncertainty.',
+      'Post-2000 homes with tighter envelopes sit near 18 \u00b5g/m\u00b3, but infiltration variability still produces outliers.',
+      'New construction meets the health benchmark in most iterations, but adverse wind conditions push 15% of samples above threshold.',
+      'The 95th percentile across all archetypes is 3.2\u00d7 the median \u2014 uncertainty propagation matters more than the point estimate.'
+    ];
+    const mcBinData = [2, 8, 18, 32, 48, 62, 78, 92, 100, 94, 82, 64, 44, 28, 16, 8, 4, 2, 1, 1].map((h, i) => ({
+      h, i, color: i < 8 ? '#b6512f' : i < 14 ? '#141414' : '#888',
+      count: [120, 480, 1080, 1920, 2880, 3720, 4680, 5520, 6000, 5640, 4920, 3840, 2640, 1680, 960, 480, 240, 120, 60, 60][i] + ' runs',
+      enter: () => this.setState({ mcHover: i }), leave: () => this.setState({ mcHover: null })
+    }));
     const sel = this.state.popupId ? POPUP_INFO[this.state.popupId] : null;
     const openPopup = (id, scope) => (e) => {
       const rect = e.currentTarget.closest('[data-popup-scope]').getBoundingClientRect();
@@ -481,6 +671,7 @@ class Component extends DCLogic {
       revealClasswork: revealStyle('classwork'),
       printPage: () => window.print(),
       fan1Bars, fan2Bars, interventionBars, pollutantRows, ticks,
+      airSpeedBars: airSpeedData, cspBars: cspData, featureBars: featureData, mcBins: mcBinData,
       bandX, bandW,
       bandLowLabel: '21.55°C',
       bandHighLabel: withFans ? '31.25°C*' : '28.75°C',
@@ -493,14 +684,19 @@ class Component extends DCLogic {
       fan2Caption: this.state.fan2Hover !== null ? FAN2_NOTES[this.state.fan2Hover] : 'Hover a bar for detail.',
       interventionCaption: this.state.interventionHover !== null ? INTERVENTION_NOTES[this.state.interventionHover] : 'Hover a bar for detail.',
       pollutantCaption: this.state.pollutantHover !== null ? POLLUTANT_NOTES[this.state.pollutantHover] : 'Hover a pollutant for detail.',
+      airSpeedCaption: this.state.airSpeedHover !== null ? AIR_SPEED_NOTES[this.state.airSpeedHover] : 'Hover a bar for detail. Data: 7-day field study, October 2023, New Delhi.',
+      cspCaption: this.state.cspHover !== null ? CSP_NOTES[this.state.cspHover] : 'Hover a scenario for detail. Countywide median CSP across Jefferson County census tracts.',
+      featureCaption: this.state.featureHover !== null ? FEATURE_NOTES[this.state.featureHover] : 'Hover a feature for detail. R\u00b2 = 0.89 on held-out test set.',
+      mcCaption: this.state.mcHover !== null ? mcNotes[this.state.mcHover] : 'Hover a bin for detail. 10,000 iterations across 8 housing archetypes, 4 code eras.',
       iihsOpen: this.state.iihsOpen,
       utOpen: this.state.utOpen,
       iihsMarker: this.state.iihsOpen ? '\u2212' : '+',
       utMarker: this.state.utOpen ? '\u2212' : '+',
       toggleIihs: () => this.setState((s) => ({ iihsOpen: !s.iihsOpen })),
       toggleUt: () => this.setState((s) => ({ utOpen: !s.utOpen })),
-      openFan: openPopup('fan', 'published'), openThermo: openPopup('thermo', 'published'), openFence: openPopup('fence', 'inwork'), openGrid: openPopup('grid', 'inwork'),
-      openNeural: openPopup('neural', 'classwork'), openDice: openPopup('dice', 'classwork'),
+      openFan: openPopup('fan', 'published'), openThermo: openPopup('thermo', 'published'), openWind: openPopup('wind', 'published'), openBuilding: openPopup('building', 'published'),
+      openFence: openPopup('fence', 'inwork'), openGrid: openPopup('grid', 'inwork'), openFactory: openPopup('factory', 'inwork'), openFilter: openPopup('filter', 'inwork'),
+      openNeural: openPopup('neural', 'classwork'), openDice: openPopup('dice', 'classwork'), openChart: openPopup('chart', 'classwork'),
       popupOpenPublished: !!sel && this.state.popupScope === 'published',
       popupOpenInwork: !!sel && this.state.popupScope === 'inwork',
       popupOpenClasswork: !!sel && this.state.popupScope === 'classwork',
