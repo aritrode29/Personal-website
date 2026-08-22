@@ -23,18 +23,30 @@
   @keyframes growbar{0%{transform:scaleY(0)}40%{transform:scaleY(1)}70%{transform:scaleY(1)}100%{transform:scaleY(0)}}
   @keyframes heroin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   @keyframes blinkcursor{50%{opacity:0}}
+  @keyframes barEnter{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+  @keyframes slideRight{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .feature-bar-fill{height:100%;border-radius:2px;transform-origin:left;animation:slideRight .8s ease-out both;transition:opacity .15s ease}
+  .feature-row:nth-child(1) .feature-bar-fill{animation-delay:0s}
+  .feature-row:nth-child(2) .feature-bar-fill{animation-delay:.08s}
+  .feature-row:nth-child(3) .feature-bar-fill{animation-delay:.16s}
+  .feature-row:nth-child(4) .feature-bar-fill{animation-delay:.24s}
+  .feature-row:nth-child(5) .feature-bar-fill{animation-delay:.32s}
+  .feature-row:nth-child(6) .feature-bar-fill{animation-delay:.4s}
+  .section-toggle{cursor:pointer;user-select:none;display:flex;align-items:center;gap:10px}
+  .section-toggle .chevron{display:inline-block;transition:transform .3s ease;font-size:12px;color:#8B5E3C}
+  .section-toggle .chevron.open{transform:rotate(90deg)}
+  .section-body{overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .35s ease}
 </style>
 </helmet>
 
 <div style="max-width:1320px;margin:0 auto;position:relative">
 
   <div class="dc-nav" style="position:sticky;top:0;z-index:5;background:rgba(253,253,252,.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.08);padding:14px 60px;display:flex;justify-content:space-between;align-items:center">
-    <a href="./index.html" style="text-decoration:none;font:600 11px ui-monospace,monospace;color:#141414;letter-spacing:.06em">&#8592; ARITRO DE</a>
+    <a href="./index.html" style="text-decoration:none;font:600 11px ui-monospace,monospace;color:#141414;letter-spacing:.06em">ARITRO DE</a>
     <div class="dc-nav-links" style="display:flex;gap:18px;align-items:center;font:400 10.5px ui-monospace,monospace;color:#999">
-      <a href="#published" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">01 PUBLISHED</a>
-      <a href="#inwork" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">02 IN WORK</a>
-      <a href="#classwork" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">03 PROJECT &amp; CLASS WORK</a>
-      <button onClick="{{ printPage }}" class="no-print" style="font:500 11px Inter,sans-serif;letter-spacing:.02em;padding:7px 14px;background:#141414;color:#fff;border:none;cursor:pointer;border-radius:2px">Download PDF</button>
+      <a href="./index.html" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">HOME</a>
+      <a href="./Research.html" style="text-decoration:none;color:#141414;transition:color .15s">RESEARCH</a>
+      <a href="./Projects.html" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">PROJECTS</a>
     </div>
   </div>
 
@@ -126,8 +138,12 @@
       </div>
     </sc-if>
 
-    <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Published</div>
-    <div style="font:400 13px/1.6 Inter,sans-serif;color:#555;margin-bottom:28px;max-width:640px">Peer-reviewed and conference work.</div>
+    <div class="section-toggle" onClick="{{ togglePublished }}" style="margin-bottom:4px">
+      <span class="chevron {{ expandedPublished ? 'open' : '' }}" style="font:400 13px ui-monospace,monospace;color:#8B5E3C">▸</span>
+      <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C">Published</div>
+    </div>
+    <div style="font:400 12px/1.5 Inter,sans-serif;color:#999;{{ expandedPublished ? 'opacity:0;max-height:0;overflow:hidden' : 'margin-bottom:16px' }};transition:opacity .3s,max-height .3s">4 published papers</div>
+    <div style="{{ publishedBodyStyle(5000) }}">
 
     <div style="border:1px solid #141414">
       <div style="padding:28px 28px 0">
@@ -189,15 +205,17 @@
           <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIG. 1 &middot; ANNUAL DISCOMFORT HOURS</div>
           <div style="display:flex;align-items:flex-end;gap:20px;height:110px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:6px">
             <sc-for list="{{ fan1Bars }}" as="bar" hint-placeholder-count="2">
-              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:60px;height:100%;justify-content:flex-end;cursor:pointer">
-                <div style="font:500 12px Inter,sans-serif;color:#141414">{{ bar.pct }}%</div>
-                <div style="width:100%;background:{{ bar.color }};height:{{ bar.h }}%;transition:opacity .15s,transform .15s;transform-origin:bottom;animation:growbar 4s ease-in-out infinite" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
+              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:64px;height:100%;justify-content:flex-end;cursor:pointer">
+                <div style="font:italic 600 16px Newsreader,serif;color:#141414;transition:color .15s" style-hover="color:#8B5E3C">{{ bar.pct }}%</div>
+                <div style="width:100%;height:{{ bar.h }}%;position:relative;overflow:visible">
+                  <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:{{ bar.color }};border-radius:3px 3px 0 0;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:all .2s" style-hover="transform:scaleY(1.06);opacity:.85"></div>
+                </div>
               </div>
             </sc-for>
           </div>
           <div style="display:flex;gap:20px;padding-left:6px;margin-top:6px">
-            <div style="width:60px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">NO FANS</div>
-            <div style="width:60px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">WITH FANS</div>
+            <div style="width:64px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888">NO FANS</div>
+            <div style="width:64px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888">WITH FANS</div>
           </div>
           <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:56px">{{ fan1Caption }}</div>
         </div>
@@ -205,15 +223,17 @@
           <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIG. 2 &middot; HOURS OUTSIDE THE IMAC BAND</div>
           <div style="display:flex;align-items:flex-end;gap:20px;height:110px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:6px">
             <sc-for list="{{ fan2Bars }}" as="bar" hint-placeholder-count="2">
-              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:60px;height:100%;justify-content:flex-end;cursor:pointer">
-                <div style="font:500 12px Inter,sans-serif;color:#141414">{{ bar.pct }}%</div>
-                <div style="width:100%;background:{{ bar.color }};height:{{ bar.h }}%;transition:opacity .15s,transform .15s;transform-origin:bottom;animation:growbar 4s ease-in-out infinite" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
+              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:64px;height:100%;justify-content:flex-end;cursor:pointer">
+                <div style="font:italic 600 16px Newsreader,serif;color:#141414;transition:color .15s" style-hover="color:#8B5E3C">{{ bar.pct }}%</div>
+                <div style="width:100%;height:{{ bar.h }}%;position:relative;overflow:visible">
+                  <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:{{ bar.color }};border-radius:3px 3px 0 0;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:all .2s" style-hover="transform:scaleY(1.06);opacity:.85"></div>
+                </div>
               </div>
             </sc-for>
           </div>
           <div style="display:flex;gap:20px;padding-left:6px;margin-top:6px">
-            <div style="width:60px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">NO FANS</div>
-            <div style="width:60px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">ADJUSTED BAND</div>
+            <div style="width:64px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888">NO FANS</div>
+            <div style="width:64px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888">ADJUSTED BAND</div>
           </div>
           <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:56px">{{ fan2Caption }}</div>
         </div>
@@ -232,15 +252,55 @@
             <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">0%</div>
           </div>
           <sc-for list="{{ airSpeedBars }}" as="bar" hint-placeholder-count="4">
-            <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;cursor:pointer;position:relative">
-              <div style="font:500 11px Inter,sans-serif;color:{{ bar.textColor }};transition:color .15s">{{ bar.pct }}%</div>
-              <div style="width:60%;background:{{ bar.color }};height:{{ bar.h }}%;transition:all .2s;transform-origin:bottom;animation:growbar 4s ease-in-out infinite" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
-              <div style="font:400 9px ui-monospace,monospace;color:#888;margin-top:2px">{{ bar.label }}</div>
+            <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end;cursor:pointer;position:relative">
+              <div style="font:italic 600 15px Newsreader,serif;color:{{ bar.textColor }};transition:color .2s">{{ bar.pct }}%</div>
+              <div style="width:64px;height:{{ bar.h }}%;position:relative;overflow:visible">
+                <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:{{ bar.color }};border-radius:3px 3px 0 0;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:all .2s" style-hover="opacity:.85;transform:scaleY(1.04);box-shadow:0 0 12px rgba(139,94,60,.2)"></div>
+              </div>
+              <div style="font:italic 500 10px Newsreader,serif;color:#888;margin-top:3px">{{ bar.label }}</div>
             </div>
           </sc-for>
         </div>
         <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:40px">{{ airSpeedCaption }}</div>
       </div>
+    </div>
+
+    <div style="border:1px solid #141414;margin-top:20px;padding:28px 28px 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:8px">FARU JOURNAL &middot; VOL. 9 ISSUE 2 &middot; 2022</div>
+          <h3 style="font:500 22px/1.3 Newsreader,serif;color:#141414;margin:0 0 8px;text-wrap:balance">Implementing At-Scale Adaptive Thermal Comfort Controls for Mixed Mode Building Using Machine Learning</h3>
+          <div style="font:400 12px Inter,sans-serif;color:#777">De, A., Thounaojam, A., Vaidya, P., Sinha, D., Raveendran, M. S., Gopikrishna, &amp; Uthej, D.</div>
+        </div>
+        <a href="https://doi.org/10.4038/faruj.v9i2.172" target="_blank" style="text-decoration:none;font:500 11px ui-monospace,monospace;color:#141414;padding:8px 14px;border:1px solid #141414;flex:none;transition:background .15s,color .15s" style-hover="background:#141414;color:#fff">DOI &#8599;</a>
+      </div>
+      <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:10px">ABSTRACT</div>
+      <p style="font:400 13.5px/1.75 Inter,sans-serif;color:#333;margin:0 0 24px;max-width:760px;padding-left:16px;border-left:2px solid rgba(0,0,0,.15)">With climate change, low carbon space-cooling approaches are becoming more important. The adaptive comfort model for mixed mode operation can be a promising approach to the cooling energy challenge. This paper used machine learning to predict operative temperature with minimum measurement equipment, for controls to optimise fan operation and minimise AC energy use. The random forest model using the ranger engine proved successful with a Root Means Square Error of 0.090&deg;C, and only 0.88% misclassification of comfort band data.</p>
+    </div>
+
+    <div style="border:1px solid #141414;margin-top:20px;padding:28px 28px 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:8px">ASHRAE BUILDING DECARBONIZATION CONFERENCE &middot; 2024</div>
+          <h3 style="font:500 22px/1.3 Newsreader,serif;color:#141414;margin:0 0 8px;text-wrap:balance">A Comparative Study of Embodied Carbon and Thermal Performance of New Lightweight Construction Technologies to Conventional Construction Technology in Affordable Housing in India</h3>
+          <div style="font:400 12px Inter,sans-serif;color:#777">Jain, G., Manchanda, S., De, A., Sarkar, S., &amp; Singh, M. &middot; Paper C19</div>
+        </div>
+      </div>
+      <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:10px">FROM THE PAPER</div>
+      <p style="font:400 13.5px/1.75 Inter,sans-serif;color:#333;margin:0 0 24px;max-width:760px;padding-left:16px;border-left:2px solid rgba(0,0,0,.15)">Compares new lightweight construction technologies against conventional methods in Indian affordable housing, examining both embodied carbon across life-cycle stages and in-use thermal performance. Provides evidence that alternative systems can reduce embodied carbon while maintaining or improving thermal comfort outcomes for low-cost housing.</p>
+    </div>
+
+    <div style="border:1px solid #141414;margin-top:20px;padding:28px 28px 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:8px">IJSER &middot; VOL. 14 ISSUE 1 &middot; 2023</div>
+          <h3 style="font:500 22px/1.3 Newsreader,serif;color:#141414;margin:0 0 8px;text-wrap:balance">Smart Cities Mission: Promises &amp; Performance: The Environmental Sustainability of Smart Cities in India</h3>
+          <div style="font:400 12px Inter,sans-serif;color:#777">De, A., Raj, A., Rana, D., Anand, P., Sharma, S. K., &amp; Seth, V.</div>
+        </div>
+      </div>
+      <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.1em;margin-bottom:10px">FROM THE PAPER</div>
+      <p style="font:400 13.5px/1.75 Inter,sans-serif;color:#333;margin:0 0 24px;max-width:760px;padding-left:16px;border-left:2px solid rgba(0,0,0,.15)">An evaluation of the environmental sustainability dimension of India&rsquo;s Smart Cities Mission, examining how selected smart city proposals address urban environmental challenges including air quality, water management, waste handling, and green infrastructure. Assesses the gap between policy promises and on-ground performance across nominated cities.</p>
+    </div>
     </div>
   </div>
 
@@ -322,8 +382,12 @@
       </div>
     </sc-if>
 
-    <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">In work</div>
-    <div style="font:400 13px/1.6 Inter,sans-serif;color:#555;margin-bottom:28px;max-width:640px">Under review or in progress.</div>
+    <div class="section-toggle" onClick="{{ toggleInwork }}" style="margin-bottom:4px">
+      <span class="chevron {{ expandedInwork ? 'open' : '' }}" style="font:400 13px ui-monospace,monospace;color:#8B5E3C">▸</span>
+      <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C">In work</div>
+    </div>
+    <div style="font:400 12px/1.5 Inter,sans-serif;color:#999;{{ expandedInwork ? 'opacity:0;max-height:0;overflow:hidden' : 'margin-bottom:16px' }};transition:opacity .3s,max-height .3s">2 under review · 1 ongoing</div>
+    <div style="{{ inworkBodyStyle(4000) }}">
 
     <div style="border:1px solid #141414;margin-bottom:24px">
       <div style="padding:28px 28px 0">
@@ -360,17 +424,19 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #141414">
         <div style="border-right:1px solid #141414;padding:20px 28px">
           <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIG. 3 &middot; WEATHERIZATION VS. FILTRATION, &Delta;CSP</div>
-          <div style="display:flex;align-items:flex-end;gap:20px;height:100px;border-bottom:1px solid rgba(0,0,0,.2);padding-left:6px">
+          <div style="display:flex;align-items:flex-end;justify-content:center;gap:110px;height:112px;border-bottom:1px solid rgba(0,0,0,.2);position:relative">
             <sc-for list="{{ interventionBars }}" as="bar" hint-placeholder-count="2">
-              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:70px;height:100%;justify-content:flex-end;cursor:pointer">
-                <div style="font:500 12px Inter,sans-serif;color:#141414">{{ bar.label }}</div>
-                <div style="width:100%;background:{{ bar.color }};height:{{ bar.h }}%;transition:opacity .15s,transform .15s;transform-origin:bottom;animation:growbar 4s ease-in-out infinite" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
+              <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;width:80px;height:100%;justify-content:flex-end;cursor:pointer">
+                <div style="font:italic 600 16px Newsreader,serif;color:#141414;transition:color .15s" style-hover="color:#8B5E3C">{{ bar.label }}</div>
+                <div style="width:100%;height:{{ bar.h }}%;position:relative;overflow:visible">
+                  <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:{{ bar.color }};border-radius:3px 3px 0 0;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:all .2s" style-hover="transform:scaleY(1.06);opacity:.85"></div>
+                </div>
               </div>
             </sc-for>
           </div>
-          <div style="display:flex;gap:20px;padding-left:6px;margin-top:6px">
-            <div style="width:70px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">WEATHERIZATION</div>
-            <div style="width:70px;text-align:center;font:400 9px ui-monospace,monospace;color:#888">FILTRATION</div>
+          <div style="display:flex;justify-content:center;gap:110px;margin-top:6px">
+            <div style="width:80px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888;white-space:nowrap">WEATHERIZATION</div>
+            <div style="width:80px;text-align:center;font:italic 500 10px Newsreader,serif;color:#888">FILTRATION</div>
           </div>
           <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:56px">{{ interventionCaption }}</div>
         </div>
@@ -378,9 +444,9 @@
           <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIG. 4 &middot; WHY PM2.5 AND VOC FAIL DIFFERENTLY</div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <sc-for list="{{ pollutantRows }}" as="row" hint-placeholder-count="2">
-              <div onMouseEnter="{{ row.enter }}" onMouseLeave="{{ row.leave }}" style="border:1px solid rgba(0,0,0,.15);padding:12px 14px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s" style-hover="border-color:#8B5E3C;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)">
+              <div onMouseEnter="{{ row.enter }}" onMouseLeave="{{ row.leave }}" style="border:1px solid rgba(0,0,0,.15);padding:14px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s" style-hover="border-color:#8B5E3C;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)">
                 <div style="font:600 11px ui-monospace,monospace;color:#141414;margin-bottom:4px">{{ row.name }}</div>
-                <div style="font:400 11.5px/1.5 Inter,sans-serif;color:#555">{{ row.desc }}</div>
+                <div style="font:400 12.5px/1.65 Inter,sans-serif;color:#555">{{ row.desc }}</div>
               </div>
             </sc-for>
           </div>
@@ -400,12 +466,21 @@
           <div style="font:400 8px ui-monospace,monospace;color:#888;text-align:right">0%</div>
         </div>
         <sc-for list="{{ cspBars }}" as="bar" hint-placeholder-count="5">
-          <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;cursor:pointer;position:relative">
-            <div style="font:500 11px Inter,sans-serif;color:{{ bar.textColor }};transition:color .15s">{{ bar.label }}</div>
-            <div style="width:70%;background:{{ bar.color }};height:{{ bar.h }}%;transition:all .2s;transform-origin:bottom;animation:growbar 4s ease-in-out infinite" style-hover="opacity:.75;transform:scaleY(1.04)"></div>
-            <div style="font:400 8px ui-monospace,monospace;color:#888;margin-top:2px;text-align:center;line-height:1.3;max-width:80px">{{ bar.name }}</div>
+          <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;cursor:pointer;position:relative;padding:0 12px">
+            <div style="font:italic 600 14px Newsreader,serif;color:{{ bar.textColor }};transition:color .2s">{{ bar.label }}</div>
+            <div style="width:64px;height:{{ bar.h }}%;position:relative;overflow:visible">
+              <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:{{ bar.color }};border-radius:3px 3px 0 0;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:all .2s" style-hover="opacity:.85;transform:scaleY(1.04);box-shadow:0 4px 14px rgba(139,94,60,.15)"></div>
+            </div>
+            <div style="font:italic 500 9px Newsreader,serif;color:#888;margin-top:4px;text-align:center;line-height:1.35;max-width:90px">{{ bar.name }}</div>
           </div>
         </sc-for>
+      </div>
+      <div style="display:flex;padding-left:36px;margin-top:0">
+        <div style="flex:1;display:flex;justify-content:center;padding:0 12px"><div style="width:1px;height:5px;background:rgba(0,0,0,.22)"></div></div>
+        <div style="flex:1;display:flex;justify-content:center;padding:0 12px"><div style="width:1px;height:5px;background:rgba(0,0,0,.22)"></div></div>
+        <div style="flex:1;display:flex;justify-content:center;padding:0 12px"><div style="width:1px;height:5px;background:rgba(0,0,0,.22)"></div></div>
+        <div style="flex:1;display:flex;justify-content:center;padding:0 12px"><div style="width:1px;height:5px;background:rgba(0,0,0,.22)"></div></div>
+        <div style="flex:1;display:flex;justify-content:center;padding:0 12px"><div style="width:1px;height:5px;background:rgba(0,0,0,.22)"></div></div>
       </div>
       <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.12);font:400 12px/1.6 Newsreader,serif;font-style:italic;color:#333;min-height:40px">{{ cspCaption }}</div>
     </div>
@@ -420,6 +495,7 @@
         <div style="font:500 17px Newsreader,serif;color:#141414;margin-bottom:6px">Buildings as Grid Assets</div>
         <div style="font:400 13px/1.65 Inter,sans-serif;color:#444">Mapping how rooftop solar, batteries, and smart loads fit into the ERCOT market as distributed energy resources, through structured customer discovery interviews with utilities and grid operators.</div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -489,8 +565,12 @@
       </div>
     </sc-if>
 
-    <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Project &amp; class work</div>
-    <div style="font:400 13px/1.6 Inter,sans-serif;color:#555;margin-bottom:28px;max-width:640px">Research-track coursework and internship projects that fed into the threads above.</div>
+    <div class="section-toggle" onClick="{{ toggleClasswork }}" style="margin-bottom:4px">
+      <span class="chevron {{ expandedClasswork ? 'open' : '' }}" style="font:400 13px ui-monospace,monospace;color:#8B5E3C">▸</span>
+      <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C">Project &amp; class work</div>
+    </div>
+    <div style="font:400 12px/1.5 Inter,sans-serif;color:#999;{{ expandedClasswork ? 'opacity:0;max-height:0;overflow:hidden' : 'margin-bottom:16px' }};transition:opacity .3s,max-height .3s">2 research-track projects</div>
+    <div style="{{ classworkBodyStyle(3000) }}">
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
       <div onClick="{{ toggleIihs }}" style="border:1px solid rgba(0,0,0,.15);padding:24px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s" style-hover="border-color:#8B5E3C;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)">
@@ -505,14 +585,14 @@
           <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12);font:400 12.5px/1.65 Inter,sans-serif;color:#555;margin-bottom:16px">The model used random forest and gradient boosting regressors trained on field-measured indoor temperature, outdoor conditions, and occupancy patterns from mixed-mode institutional buildings in New Delhi. Feature importance analysis revealed that outdoor temperature and relative humidity were the dominant predictors, while ceiling fan state provided a secondary but consistent reduction in predicted cooling load. The 60 percent reduction in estimated cooling load came from replacing a conservative fixed-setpoint baseline with the data-driven model&rsquo;s more accurate representation of actual thermal behavior.</div>
           <div style="border:1px solid rgba(0,0,0,.15);padding:16px">
             <div style="font:400 9px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:12px">FEATURE IMPORTANCE &middot; GRADIENT BOOSTING</div>
-            <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-direction:column;gap:9px">
               <sc-for list="{{ featureBars }}" as="bar" hint-placeholder-count="5">
-                <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;align-items:center;gap:10px;cursor:pointer">
-                  <div style="font:400 10px ui-monospace,monospace;color:#555;width:110px;text-align:right;flex:none">{{ bar.name }}</div>
-                  <div style="flex:1;height:18px;background:rgba(0,0,0,.04);position:relative;overflow:hidden">
-                    <div style="height:100%;background:{{ bar.color }};width:{{ bar.w }}%;transition:all .3s;transform-origin:left" style-hover="opacity:.7"></div>
+                <div class="feature-row" onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="display:flex;align-items:center;gap:12px;cursor:pointer">
+                  <div style="font:italic 500 10px Newsreader,serif;color:#555;width:120px;text-align:right;flex:none">{{ bar.name }}</div>
+                  <div style="flex:1;height:20px;background:rgba(139,94,60,.06);position:relative;overflow:hidden;border-radius:2px">
+                    <div class="feature-bar-fill" style="background:{{ bar.color }};width:{{ bar.w }}%" style-hover="opacity:.7"></div>
                   </div>
-                  <div style="font:500 10px ui-monospace,monospace;color:{{ bar.textColor }};width:36px;flex:none;transition:color .15s">{{ bar.pct }}</div>
+                  <div style="font:italic 600 11px Newsreader,serif;color:{{ bar.textColor }};width:36px;flex:none;transition:color .15s">{{ bar.pct }}</div>
                 </div>
               </sc-for>
             </div>
@@ -538,16 +618,16 @@
                 <div style="font:400 7px ui-monospace,monospace;color:#888;text-align:right">low</div>
               </div>
               <sc-for list="{{ mcBins }}" as="bin" hint-placeholder-count="10">
-                <div onMouseEnter="{{ bin.enter }}" onMouseLeave="{{ bin.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;cursor:pointer;position:relative">
-                  <div style="font:400 8px ui-monospace,monospace;color:#888;position:absolute;top:-14px;white-space:nowrap">{{ bin.count }}</div>
-                  <div style="width:100%;background:{{ bin.color }};height:{{ bin.h }}%;transition:all .2s;transform-origin:bottom" style-hover="opacity:.7;transform:scaleY(1.06)"></div>
+                <div class="mc-col" onMouseEnter="{{ bin.enter }}" onMouseLeave="{{ bin.leave }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;cursor:pointer;position:relative">
+                  <div style="font:italic 500 8px Newsreader,serif;color:#666;position:absolute;top:-15px;white-space:nowrap">{{ bin.count }}</div>
+                  <div class="mc-fill" style="width:100%;background:{{ bin.color }};height:{{ bin.h }}%;border-radius:2px 2px 0 0;transition:all .25s ease;transform-origin:bottom" style-hover="transform:scaleY(1.06);opacity:.8"></div>
                 </div>
               </sc-for>
             </div>
-            <div style="display:flex;justify-content:space-between;padding-left:32px;margin-top:4px">
-              <div style="font:400 8px ui-monospace,monospace;color:#888">0 &micro;g/m&sup3;</div>
-              <div style="font:400 8px ui-monospace,monospace;color:#888">50</div>
-              <div style="font:400 8px ui-monospace,monospace;color:#888">100+</div>
+            <div style="display:flex;justify-content:space-between;padding-left:32px;margin-top:5px">
+              <div style="font:italic 500 8px Newsreader,serif;color:#999">0 &micro;g/m&sup3;</div>
+              <div style="font:italic 500 8px Newsreader,serif;color:#999">50</div>
+              <div style="font:italic 500 8px Newsreader,serif;color:#999">100+</div>
             </div>
             <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,.08);font:400 11px/1.5 Newsreader,serif;font-style:italic;color:#666;min-height:32px">{{ mcCaption }}</div>
           </div>
@@ -555,7 +635,7 @@
       </div>
     </div>
   </div>
-
+  </div>
 </div>
 
 </x-dc>
@@ -598,7 +678,7 @@ const POPUP_INFO = {
 };
 
 class Component extends DCLogic {
-  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {}, typedLen: 0, headlineIdx: 0, airSpeedHover: null, cspHover: null, featureHover: null, mcHover: null };
+  state = { fan1Hover: null, fan2Hover: null, interventionHover: null, pollutantHover: null, popupId: null, popupAnchor: null, bandMode: 'without', iihsOpen: false, utOpen: false, revealed: {}, typedLen: 0, headlineIdx: 0, airSpeedHover: null, cspHover: null, featureHover: null, mcHover: null, expandedPublished: true, expandedInwork: false, expandedClasswork: false };
 
   componentDidMount() {
     let n = 0;
@@ -735,8 +815,8 @@ class Component extends DCLogic {
       bandX, bandW,
       bandLowLabel: '21.55°C',
       bandHighLabel: withFans ? '31.25°C*' : '28.75°C',
-      withoutBtnStyle: !withFans ? 'font:600 11px ui-monospace,monospace;padding:7px 14px;background:#141414;color:#fff;border:1px solid #141414;cursor:pointer;border-radius:2px' : 'font:600 11px ui-monospace,monospace;padding:7px 14px;background:#fff;color:#555;border:1px solid rgba(0,0,0,.2);cursor:pointer;border-radius:2px',
-      withBtnStyle: withFans ? 'font:600 11px ui-monospace,monospace;padding:7px 14px;background:#141414;color:#fff;border:1px solid #141414;cursor:pointer;border-radius:2px' : 'font:600 11px ui-monospace,monospace;padding:7px 14px;background:#fff;color:#555;border:1px solid rgba(0,0,0,.2);cursor:pointer;border-radius:2px',
+      withoutBtnStyle: !withFans ? 'font:600 11px ui-monospace,monospace;padding:8px 16px;background:#141414;color:#fff;border:1px solid #141414;cursor:pointer;border-radius:14px;transition:background .25s ease,color .25s ease,border-color .25s ease' : 'font:600 11px ui-monospace,monospace;padding:8px 16px;background:transparent;color:#888;border:1px solid rgba(0,0,0,.15);cursor:pointer;border-radius:14px;transition:background .25s ease,color .25s ease,border-color .25s ease',
+      withBtnStyle: withFans ? 'font:600 11px ui-monospace,monospace;padding:8px 16px;background:#141414;color:#fff;border:1px solid #141414;cursor:pointer;border-radius:14px;transition:background .25s ease,color .25s ease,border-color .25s ease' : 'font:600 11px ui-monospace,monospace;padding:8px 16px;background:transparent;color:#888;border:1px solid rgba(0,0,0,.15);cursor:pointer;border-radius:14px;transition:background .25s ease,color .25s ease,border-color .25s ease',
       setWithout: () => this.setState({ bandMode: 'without' }),
       setWith: () => this.setState({ bandMode: 'with' }),
       bandNote: withFans ? '*modeled equivalent of the 2.5°C comfort-zone extension measured with fans running' : 'IMAC adaptive comfort band without ceiling fans',
@@ -768,7 +848,13 @@ class Component extends DCLogic {
         return 'position:absolute;top:' + top + 'px;left:' + left + 'px;z-index:50;background:#fdfdfc;width:300px;padding:22px;border:1px solid rgba(0,0,0,.15);box-shadow:0 12px 32px rgba(0,0,0,.18);animation:popupin .2s ease-out';
       })(),
       closePopup: () => this.setState({ popupId: null }),
-      stopClick: (e) => e.stopPropagation()
+      stopClick: (e) => e.stopPropagation(),
+      togglePublished: () => this.setState((s) => ({ expandedPublished: !s.expandedPublished })),
+      toggleInwork: () => this.setState((s) => ({ expandedInwork: !s.expandedInwork })),
+      toggleClasswork: () => this.setState((s) => ({ expandedClasswork: !s.expandedClasswork })),
+      publishedBodyStyle: (h) => 'max-height:' + (this.state.expandedPublished ? h + 'px' : '0px') + ';opacity:' + (this.state.expandedPublished ? '1' : '0') + ';overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .35s ease',
+      inworkBodyStyle: (h) => 'max-height:' + (this.state.expandedInwork ? h + 'px' : '0px') + ';opacity:' + (this.state.expandedInwork ? '1' : '0') + ';overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .35s ease',
+      classworkBodyStyle: (h) => 'max-height:' + (this.state.expandedClasswork ? h + 'px' : '0px') + ';opacity:' + (this.state.expandedClasswork ? '1' : '0') + ';overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .35s ease'
     };
   }
 }
