@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#fdfdfc"/><rect x="20" y="20" width="160" height="160" fill="none" stroke="#141414" stroke-width="3"/><text x="60" y="115" font-family="Georgia,serif" font-size="48" fill="#b6512f">AD</text></svg></template>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#fdfdfc"/><rect x="20" y="20" width="160" height="160" fill="none" stroke="#141414" stroke-width="3"/><text x="60" y="115" font-family="Georgia,serif" font-size="48" fill="#8B5E3C">AD</text></svg></template>
 <helmet data-dc-atomics="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -25,9 +25,9 @@
 <script src="./three-d-stage.js"></script>
 <script src="./image-slot.js"></script>
 <style>
-  body{margin:0;background:#fdfdfc;font-family:'Inter',sans-serif}
+  body{margin:0;background:#fdfdfc;font-family:'Inter',sans-serif;color:#1a1a1a}
   a{color:inherit}
-  @keyframes growbar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes growbar{0%{transform:scaleY(0)}40%{transform:scaleY(1)}70%{transform:scaleY(1)}100%{transform:scaleY(0)}}
   @keyframes pulsedot{0%,100%{opacity:1}50%{opacity:.35}}
   @keyframes blinkcursor{50%{opacity:0}}
   @keyframes popupin{from{opacity:0;transform:scale(.94) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
@@ -35,6 +35,48 @@
   .navlink{transition:opacity .15s}
   .navlink:hover{opacity:.6}
   three-d-stage:not(:defined){visibility:hidden}
+
+  /* --- Tablet --- */
+  @media(max-width:960px){
+    .dc-4col-grid{grid-template-columns:repeat(2,1fr)!important}
+    .dc-research-grid{grid-template-columns:1fr!important}
+    .dc-skills-grid{grid-template-columns:1fr 1fr!important}
+    .dc-tools-grid{grid-template-columns:1fr!important}
+    .dc-hero h1{font-size:52px!important;height:auto!important}
+    .dc-hero{padding:36px 20px 28px!important}
+    .dc-section{padding:32px 20px!important}
+    .dc-nav-links{gap:10px!important}
+    .dc-reading-flex{flex-direction:column!important;align-items:center!important}
+    .dc-reading-text{text-align:center}
+    .dc-reading-text blockquote{text-align:left!important}
+  }
+
+  /* --- Phone --- */
+  @media(max-width:600px){
+    body{overflow-x:hidden}
+    .dc-4col-grid{grid-template-columns:1fr 1fr!important}
+    .dc-4col-grid a{padding:16px!important}
+    .dc-research-grid{grid-template-columns:1fr!important}
+    .dc-skills-grid{grid-template-columns:1fr!important}
+    .dc-tools-grid{grid-template-columns:1fr!important}
+    .dc-hero h1{font-size:34px!important;height:auto!important;line-height:1.1!important}
+    .dc-hero{padding:28px 20px 24px!important}
+    .dc-hero image-slot{width:42px!important;height:42px!important}
+    .dc-section{padding:28px 20px!important}
+    .dc-nav{flex-wrap:wrap;gap:8px 12px!important;padding:12px 20px!important}
+    .dc-nav-links{gap:6px 10px!important;font-size:9.5px!important}
+    .dc-reading-flex{flex-direction:column!important;align-items:center!important}
+    .dc-reading-svg{width:140px!important;height:170px!important}
+    .dc-reading-text{text-align:center}
+    .dc-reading-text blockquote{text-align:left!important}
+    .dc-reading-buttons{justify-content:center!important}
+    .dc-contact{flex-direction:column!important;gap:12px!important;text-align:center!important}
+    .dc-spotify{width:100%!important}
+    .dc-chart-svg{height:140px!important}
+    .dc-projects-card{flex:0 0 calc(100vw - 80px)!important}
+    .dc-reading-section{padding:32px 20px!important}
+  }
+  }
 </style>
 </helmet>
 
@@ -62,7 +104,7 @@
               <path d="M58 42 L 63 42" stroke-width="1"></path>
               <path d="M58 52 L 61 52" stroke-width=".8"></path>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(3deg)">click me ↝</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-6px;transform:rotate(3deg)">click me ↝</div>
           </div>
 
           <div onClick="{{ openFigSensor }}" title="Air quality monitoring" style="{{ sensorWrapStyle }}" style-hover="opacity:.95;transform:rotate(3deg) scale(1.1)">
@@ -79,7 +121,7 @@
               <circle cx="100" cy="20" r="1.5" fill="#141414"><animate attributeName="cy" values="20;15;20" dur="3s" repeatCount="indefinite" begin=".4s"/></circle>
               <circle cx="88" cy="8" r="1.5" fill="#141414"><animate attributeName="cy" values="8;4;8" dur="2.8s" repeatCount="indefinite" begin=".8s"/></circle>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-4px;transform:rotate(-3deg);text-align:right">click me ↜</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-4px;transform:rotate(-3deg);text-align:right">click me ↜</div>
           </div>
 
           <div onClick="{{ openFigEnergy }}" title="Energy modeling" style="{{ energyWrapStyle }}" style-hover="opacity:.95;transform:rotate(3deg) scale(1.1)">
@@ -91,7 +133,7 @@
               <circle cx="106" cy="70" r="17" stroke-width="1.2"></circle>
               <path d="M106 70 L 114 62" stroke-width="1.2"></path><path d="M106 70 L 106 57" stroke-width="1.2"></path>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(-3deg)">click me ↝</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-6px;transform:rotate(-3deg)">click me ↝</div>
           </div>
 
           <div onClick="{{ openFigPolicy }}" title="Codes &amp; policy" style="{{ policyWrapStyle }}" style-hover="opacity:.95;transform:rotate(-3deg) scale(1.1)">
@@ -107,7 +149,7 @@
               <path d="M46 80 C 54 78 66 78 74 80" stroke-width="1.2"></path>
               <path d="M22 92 C 42 90 78 90 98 92" stroke-width="1.2"></path>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(3deg);text-align:right">click me ↜</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-6px;transform:rotate(3deg);text-align:right">click me ↜</div>
           </div>
 
           <div onClick="{{ openFigSolar }}" title="Distributed energy resources" style="{{ solarWrapStyle }}" style-hover="opacity:.95;transform:rotate(-3deg) scale(1.1)">
@@ -126,7 +168,7 @@
               <path d="M92 56 C 96 54 100 54 104 56" stroke-width="1" stroke-dasharray="3 3"><animate attributeName="d" values="M92 56 C 96 54 100 54 104 56;M92 59 C 96 57 100 57 104 59;M92 56 C 96 54 100 54 104 56" dur="2.8s" repeatCount="indefinite" begin=".4s"/></path>
               <path d="M88 68 C 92 66 96 66 100 68" stroke-width="1" stroke-dasharray="3 3"><animate attributeName="d" values="M88 68 C 92 66 96 66 100 68;M88 71 C 92 69 96 69 100 71;M88 68 C 92 66 96 66 100 68" dur="2.3s" repeatCount="indefinite" begin=".8s"/></path>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(2deg)">click me ↝</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-6px;transform:rotate(2deg)">click me ↝</div>
           </div>
 
           <div onClick="{{ openFigAir }}" title="Ventilation &amp; airflow" style="{{ airWrapStyle }}" style-hover="opacity:.95;transform:rotate(4deg) scale(1.1)">
@@ -137,70 +179,69 @@
               <path d="M88 52 C 98 50 108 54 112 64 C 116 74 106 78 96 78" stroke-width="1.1"><animate attributeName="d" values="M88 52 C 98 50 108 54 112 64 C 116 74 106 78 96 78;M88 52 C 106 50 116 54 120 64 C 124 74 114 78 102 78;M88 52 C 98 50 108 54 112 64 C 116 74 106 78 96 78" dur="3.5s" repeatCount="indefinite" begin=".5s"/></path>
               <path d="M88 68 C 94 66 98 70 100 76" stroke-width="1.1"><animate attributeName="d" values="M88 68 C 94 66 98 70 100 76;M88 68 C 100 66 106 70 108 76;M88 68 C 94 66 98 70 100 76" dur="2.8s" repeatCount="indefinite" begin="1s"/></path>
             </svg>
-            <div style="font:italic 500 12px Newsreader,serif;color:#b6512f;margin-top:-6px;transform:rotate(-2deg);text-align:right">click me ↜</div>
+            <div style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;margin-top:-6px;transform:rotate(-2deg);text-align:right">click me ↜</div>
           </div>
 
           <sc-if value="{{ popupOpen }}" hint-placeholder-val="{{ false }}">
             <div onClick="{{ closePopup }}" style="position:absolute;inset:0;z-index:49">
               <div onClick="{{ stopClick }}" style="{{ popupCardStyle }}">
                 <button onClick="{{ closePopup }}" style="position:absolute;top:14px;right:14px;background:none;border:none;font:400 16px ui-monospace,monospace;color:#999;cursor:pointer">×</button>
-                <div style="font:400 10.5px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:10px">{{ popupLabel }}</div>
+                <div style="font:400 10.5px ui-monospace,monospace;color:#8B5E3C;letter-spacing:.08em;margin-bottom:10px">{{ popupLabel }}</div>
                 <div style="font:500 20px Newsreader,serif;color:#141414;margin-bottom:10px">{{ popupTitle }}</div>
                 <div style="font:400 13.5px/1.7 Inter,sans-serif;color:#444">{{ popupBody }}</div>
               </div>
             </div>
           </sc-if>
 
-          <div style="position:sticky;top:0;z-index:5;background:rgba(253,253,252,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.12);padding:12px 60px;display:flex;justify-content:space-between;align-items:center">
+          <div class="dc-nav" style="position:sticky;top:0;z-index:5;background:rgba(253,253,252,.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.08);padding:14px 60px;display:flex;justify-content:space-between;align-items:center">
             <div style="font:600 11px ui-monospace,monospace;color:#141414;letter-spacing:.06em">ARITRO DE</div>
-            <div style="display:flex;gap:18px;font:400 11px ui-monospace,monospace;color:#888">
-              <a href="#2a-research" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">01 RESEARCH</a>
-              <a href="#2a-building" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">02 EXPLORE</a>
-              <a href="#2a-experience" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">03 EXPERIENCE</a>
-              <a href="#2a-projects" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">04 PROJECTS</a>
-              <a href="#2a-skills" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">05 SKILLS</a>
-              <a href="#2a-tools" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">06 TOOLS</a>
-              <a href="#2a-pubs" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">07 PUBLICATIONS</a>
-              <a href="#2a-contact" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#b6512f">08 CONTACT</a>
+            <div class="dc-nav-links" style="display:flex;gap:18px;font:400 10.5px ui-monospace,monospace;color:#999">
+              <a href="#2a-research" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">01 RESEARCH</a>
+              <a href="#2a-building" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">02 EXPLORE</a>
+              <a href="#2a-experience" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">03 EXPERIENCE</a>
+              <a href="#2a-projects" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">04 PROJECTS</a>
+              <a href="#2a-skills" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">05 SKILLS</a>
+              <a href="#2a-tools" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">06 TOOLS</a>
+              <a href="#2a-pubs" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">07 PUBLICATIONS</a>
+              <a href="#2a-contact" style="text-decoration:none;color:inherit;transition:color .15s" style-hover="color:#8B5E3C">08 CONTACT</a>
             </div>
           </div>
 
-          <div style="position:relative;padding:64px 60px 44px;overflow:hidden">
-            <svg viewBox="0 0 1200 260" width="100%" height="260" style="position:absolute;inset:0;opacity:.05">
-              <rect x="40" y="140" width="90" height="120" fill="none" stroke="#141414" stroke-width="2"></rect>
-              <rect x="150" y="80" width="90" height="180" fill="none" stroke="#141414" stroke-width="2"></rect>
-              <rect x="260" y="160" width="90" height="100" fill="none" stroke="#141414" stroke-width="2"></rect>
-              <rect x="1000" y="100" width="90" height="160" fill="none" stroke="#141414" stroke-width="2"></rect>
-              <rect x="1090" y="150" width="70" height="110" fill="none" stroke="#141414" stroke-width="2"></rect>
-              <line x1="0" y1="260" x2="1200" y2="260" stroke="#141414" stroke-width="2"></line>
+          <div class="dc-hero" style="position:relative;padding:72px 60px 48px;overflow:hidden;background:#fff">
+            <svg viewBox="0 0 1200 260" width="100%" height="260" style="position:absolute;inset:0;opacity:.04">
+              <path d="M40 140 L 40 260 L 130 260 L 130 140 Z" fill="none" stroke="#141414" stroke-width="1.5"></path>
+              <path d="M150 80 L 150 260 L 240 260 L 240 80 Z" fill="none" stroke="#141414" stroke-width="1.5"></path>
+              <path d="M260 160 L 260 260 L 350 260 L 350 160 Z" fill="none" stroke="#141414" stroke-width="1.5"></path>
+              <path d="M1000 100 L 1000 260 L 1090 260 L 1090 100 Z" fill="none" stroke="#141414" stroke-width="1.5"></path>
+              <path d="M1090 150 L 1090 260 L 1160 260 L 1160 150 Z" fill="none" stroke="#141414" stroke-width="1.5"></path>
             </svg>
             <div style="position:relative;display:flex;align-items:center;gap:14px;margin-bottom:12px;animation:heroin .7s ease-out both">
               <image-slot id="profile-photo" shape="circle" placeholder="photo" src="./images/profile_pic.png" style="width:56px;height:56px"></image-slot>
               <div style="font:500 22px Newsreader,serif;color:#141414">Aritro De</div>
             </div>
-            <div style="position:relative;font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:16px;animation:heroin .7s ease-out .1s both">BUILDING SCIENCE · IEQ · POLICY</div>
+            <div style="position:relative;font:italic 400 13px Newsreader,serif;color:#8B5E3C;letter-spacing:.03em;margin-bottom:16px;animation:heroin .7s ease-out .1s both">building science · indoor air quality · policy</div>
             <h1 style="position:relative;font:500 78px/1.02 Newsreader,serif;margin:0 0 20px;color:#141414;max-width:1191px;height:240px;overflow:hidden;animation:heroin .7s ease-out .2s both">{{ typedHeadline }}<span style="animation:blinkcursor 1s step-start infinite">|</span></h1>
-            <div style="position: relative; font: 500 14px Inter,sans-serif; color: oklch(45% 0.02 250); margin-bottom: 18px; display: none">Indoor air quality, energy modeling, and building policy.</div>
-            <div style="position:relative;display:flex;gap:14px;flex-wrap:wrap;animation:heroin .7s ease-out .3s both">
-              <a href="https://scholar.google.com/citations?user=qfAUQmgAAAAJ&hl=en&authuser=1" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">GOOGLE SCHOLAR</a>
-              <a href="https://github.com/aritrode29" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">GITHUB</a>
-              <a href="https://www.linkedin.com/in/aritro-de-12207b1a0/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">LINKEDIN</a>
-              <a href="https://www.instagram.com/aritro.de/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">INSTAGRAM</a>
-              <a href="https://orcid.org/0000-0003-1965-0348" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">ORCID</a>
-              <a href="#" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:7px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#b6512f;color:#b6512f">DOWNLOAD CV</a>
+            <div style="position: relative; font: 500 14px Inter,sans-serif; color: #8B5E3C; margin-bottom: 18px; display: none">Indoor air quality, energy modeling, and building policy.</div>
+            <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;animation:heroin .7s ease-out .3s both">
+              <a href="https://scholar.google.com/citations?user=qfAUQmgAAAAJ&hl=en&authuser=1" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">SCHOLAR</a>
+              <a href="https://github.com/aritrode29" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">GITHUB</a>
+              <a href="https://www.linkedin.com/in/aritro-de-12207b1a0/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">LINKEDIN</a>
+              <a href="https://www.instagram.com/aritro.de/" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">INSTAGRAM</a>
+              <a href="https://orcid.org/0000-0003-1965-0348" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">ORCID</a>
+              <a href="#" style="text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#141414;padding:6px 12px;border:1px solid rgba(0,0,0,.2);transition:border-color .15s,color .15s" style-hover="border-color:#8B5E3C;color:#8B5E3C">DOWNLOAD CV</a>
             </div>
-            <div style="position:relative;font:400 12.5px Inter,sans-serif;color:#555;margin-top:16px">aritrode12@gmail.com · Austin, TX</div>
+            <div style="position:relative;font:400 12px Newsreader,serif;color:#999;margin-top:16px">aritrode12@gmail.com · Austin, TX</div>
           </div>
 
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #141414;border-bottom:1px solid #141414">
-            <a href="#2a-research" style="text-decoration:none;color:inherit;padding:24px;border-right:1px solid rgba(0,0,0,.15);position:relative;overflow:hidden">
-              <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">FIG. 1–2</div>
+          <div class="dc-4col-grid" style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,0,0,.08)">
+            <a href="#2a-research" style="text-decoration:none;color:inherit;padding:24px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden">
+              <div style="font:italic 400 11px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Research</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
                 <line x1="2" y1="52" x2="46" y2="52" stroke="#ddd" stroke-width="1"></line><line x1="2" y1="6" x2="2" y2="52" stroke="#ddd" stroke-width="1"></line>
-                <rect x="6" y="34" width="6" height="18" fill="#b6512f" transform-origin="9 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
-                <rect x="16" y="24" width="6" height="28" fill="#b6512f" transform-origin="19 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.15s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
-                <rect x="26" y="14" width="6" height="38" fill="#b6512f" transform-origin="29 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.3s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
-                <rect x="36" y="8" width="6" height="44" fill="#b6512f" transform-origin="39 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.45s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="6" y="34" width="6" height="18" fill="#8B5E3C" transform-origin="9 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="16" y="24" width="6" height="28" fill="#8B5E3C" transform-origin="19 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.15s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="26" y="14" width="6" height="38" fill="#8B5E3C" transform-origin="29 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.3s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
+                <rect x="36" y="8" width="6" height="44" fill="#8B5E3C" transform-origin="39 52"><animateTransform attributeName="transform" type="scale" values="1 0;1 1;1 0" dur="3s" repeatCount="indefinite" begin="0.45s" keyTimes="0;0.4;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" calcMode="spline"/></rect>
                 <line x1="56" y1="52" x2="98" y2="52" stroke="#ddd" stroke-width="1"></line><line x1="56" y1="6" x2="56" y2="52" stroke="#ddd" stroke-width="1"></line>
                 <polyline points="60,44 70,30 80,34 92,10" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="120" stroke-dashoffset="120"><animate attributeName="stroke-dashoffset" values="120;0;120" dur="4s" repeatCount="indefinite"/></polyline>
                 <circle cx="60" cy="44" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.2;0.7;1"/></circle>
@@ -208,54 +249,54 @@
                 <circle cx="80" cy="34" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.4;0.7;1"/></circle>
                 <circle cx="92" cy="10" r="2.5" fill="#141414" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" keyTimes="0;0.5;0.7;1"/></circle>
               </svg>
-              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Research</div><div style="font:400 10px ui-monospace,monospace;color:#999">two live threads</div>
-              <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
-                <div style="font:500 13px Inter,sans-serif">Research →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.6);margin-top:4px">IEQ and energy modeling</div>
+              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Research</div><div style="font:italic 400 10px Newsreader,serif;color:#999">two live threads</div>
+              <div style="position:absolute;inset:0;background:#8B5E3C;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
+                <div style="font:500 13px Inter,sans-serif">Research →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.7);margin-top:4px">IEQ and energy modeling</div>
               </div>
             </a>
             <a href="#2a-experience" style="text-decoration:none;color:inherit;padding:24px;border-right:1px solid rgba(0,0,0,.15);position:relative;overflow:hidden">
-              <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">FIG. 6</div>
+              <div style="font:italic 400 11px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Timeline</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
-                <line x1="6" y1="30" x2="94" y2="30" stroke="oklch(45% 0.02 250)" stroke-width="2"></line>
-                <circle cx="14" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/></circle>
-                <circle cx="40" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="0.75s"/></circle>
-                <circle cx="66" cy="30" r="5" fill="oklch(45% 0.02 250)"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="1.5s"/></circle>
-                <circle cx="92" cy="30" r="5" fill="#b6512f"><animate attributeName="r" values="3;7;3" dur="2.5s" repeatCount="indefinite"/></circle>
+                <line x1="6" y1="30" x2="94" y2="30" stroke="#8B5E3C" stroke-width="2"></line>
+                <circle cx="14" cy="30" r="5" fill="#8B5E3C"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/></circle>
+                <circle cx="40" cy="30" r="5" fill="#8B5E3C"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="0.75s"/></circle>
+                <circle cx="66" cy="30" r="5" fill="#8B5E3C"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" begin="1.5s"/></circle>
+                <circle cx="92" cy="30" r="5" fill="#8B5E3C"><animate attributeName="r" values="3;7;3" dur="2.5s" repeatCount="indefinite"/></circle>
                 <line x1="14" y1="38" x2="14" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="40" y1="38" x2="40" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="66" y1="38" x2="66" y2="46" stroke="#ccc" stroke-width="1"></line><line x1="92" y1="38" x2="92" y2="46" stroke="#ccc" stroke-width="1"></line>
               </svg>
-              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Experience</div><div style="font:400 10px ui-monospace,monospace;color:#999">timeline</div>
-              <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
-                <div style="font:500 13px Inter,sans-serif">Experience →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.6);margin-top:4px">UT Austin, Pledge4Earth, EDS, IIHS</div>
+              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Experience</div><div style="font:italic 400 10px Newsreader,serif;color:#999">timeline</div>
+              <div style="position:absolute;inset:0;background:#8B5E3C;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
+                <div style="font:500 13px Inter,sans-serif">Experience →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.7);margin-top:4px">UT Austin, Pledge4Earth, EDS, IIHS</div>
               </div>
             </a>
             <a href="#2a-projects" style="text-decoration:none;color:inherit;padding:24px;border-right:1px solid rgba(0,0,0,.15);position:relative;overflow:hidden">
-              <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">FIG. 7</div>
+              <div style="font:italic 400 11px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Portfolio</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
                 <rect x="8" y="8" width="84" height="44" fill="none" stroke="#141414" stroke-width="1.5"></rect>
                 <line x1="52" y1="8" x2="52" y2="52" stroke="#141414" stroke-width="1"></line>
                 <line x1="8" y1="34" x2="30" y2="34" stroke="#141414" stroke-width="1"></line>
-                <path d="M52,34 A18,18 0 0 1 70,52" fill="none" stroke="#b6512f" stroke-width="1" stroke-dasharray="60" stroke-dashoffset="60"><animate attributeName="stroke-dashoffset" values="60;0;60" dur="3s" repeatCount="indefinite"/></path>
-                <line x1="70" y1="52" x2="52" y2="34" stroke="#b6512f" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></line>
+                <path d="M52,34 A18,18 0 0 1 70,52" fill="none" stroke="#8B5E3C" stroke-width="1" stroke-dasharray="60" stroke-dashoffset="60"><animate attributeName="stroke-dashoffset" values="60;0;60" dur="3s" repeatCount="indefinite"/></path>
+                <line x1="70" y1="52" x2="52" y2="34" stroke="#8B5E3C" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></line>
               </svg>
-              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Projects</div><div style="font:400 10px ui-monospace,monospace;color:#999">architecture</div>
-              <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
-                <div style="font:500 13px Inter,sans-serif">Projects →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.6);margin-top:4px">ORD School, Housing, Tending the Flow</div>
+              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Projects</div><div style="font:italic 400 10px Newsreader,serif;color:#999">architecture & research</div>
+              <div style="position:absolute;inset:0;background:#8B5E3C;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
+                <div style="font:500 13px Inter,sans-serif">Projects →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.7);margin-top:4px">ORD School, Housing, Tending the Flow</div>
               </div>
             </a>
             <a href="#2a-pubs" style="text-decoration:none;color:inherit;padding:24px;position:relative;overflow:hidden">
-              <div style="font:400 9px ui-monospace,monospace;color:#b6512f;margin-bottom:6px">TABLE 1</div>
+              <div style="font:italic 400 11px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Published</div>
               <svg viewBox="0 0 100 60" width="100%" height="54" style="transition:transform .2s" style-hover="transform:scale(1.08)">
                 <rect x="6" y="8" width="88" height="44" fill="none" stroke="#141414" stroke-width="1"></rect>
                 <line x1="6" y1="22" x2="94" y2="22" stroke="#141414" stroke-width="1"></line>
                 <line x1="6" y1="34" x2="94" y2="34" stroke="#ddd" stroke-width="1"></line>
                 <line x1="6" y1="44" x2="94" y2="44" stroke="#ddd" stroke-width="1"></line>
                 <line x1="66" y1="8" x2="66" y2="52" stroke="#ddd" stroke-width="1"></line>
-                <rect x="6" y="22" width="88" height="12" fill="#b6512f" opacity="0"><animate attributeName="opacity" values="0;0.25;0" dur="3s" repeatCount="indefinite"/></rect>
-                <circle cx="76" cy="28" r="2" fill="#b6512f"><animate attributeName="r" values="1.5;3.5;1.5" dur="2s" repeatCount="indefinite"/></circle>
+                <rect x="6" y="22" width="88" height="12" fill="#8B5E3C" opacity="0"><animate attributeName="opacity" values="0;0.25;0" dur="3s" repeatCount="indefinite"/></rect>
+                <circle cx="76" cy="28" r="2" fill="#8B5E3C"><animate attributeName="r" values="1.5;3.5;1.5" dur="2s" repeatCount="indefinite"/></circle>
               </svg>
-              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Publications</div><div style="font:400 10px ui-monospace,monospace;color:#999">6 papers</div>
-              <div style="position:absolute;inset:0;background:#141414;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
-                <div style="font:500 13px Inter,sans-serif">Publications →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.6);margin-top:4px">IBPSA, ASCE, arXiv, ESSOAr</div>
+              <div style="font:500 12px Inter,sans-serif;margin-top:10px">Publications</div><div style="font:italic 400 10px Newsreader,serif;color:#999">4 papers</div>
+              <div style="position:absolute;inset:0;background:#8B5E3C;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 24px;opacity:0;transition:opacity .2s" style-hover="opacity:1">
+                <div style="font:500 13px Inter,sans-serif">Publications →</div><div style="font:400 10px ui-monospace,monospace;color:rgba(255,255,255,.7);margin-top:4px">IBPSA, ASCE, arXiv, ESSOAr</div>
               </div>
             </a>
           </div>
@@ -265,9 +306,9 @@
             <p style="font:400 14px/1.7 Inter,sans-serif;color:#444;max-width:680px;margin-top:16px">Before UT, I spent a year as a policy analyst contributing to USAID and GIZ-funded programs on low-carbon cooling and thermal comfort in affordable housing across South Asia. I hold a Bachelor of Architecture, which lets me think from the community up, not just at a macro scale.</p>
           </div>
 
-          <div id="2a-research" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealResearch }}">
+          <div id="2a-research" class="dc-section" style="padding:52px 60px;background:#fff;transition:opacity .7s ease,transform .7s ease;{{ revealResearch }}">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;flex-wrap:wrap;gap:16px">
-              <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em">RESEARCH — TWO THREADS</div>
+              <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:20px">Two threads, one question</div>
               <div style="display:flex;border:1px solid #141414">
                 <button onClick="{{ setIaq }}" style="{{ iaqBtnStyle }}">Indoor Environmental Quality</button>
                 <button onClick="{{ setGrid }}" style="{{ gridBtnStyle }}">Building Energy Modeling &amp; Comfort</button>
@@ -278,7 +319,7 @@
               <div>
                 <div style="font:500 20px Newsreader,serif;margin-bottom:8px">Indoor Environmental Quality</div>
                 <p style="font:400 13.5px/1.7 Inter,sans-serif;color:#444;margin-bottom:24px;max-width:820px">I study whether home building codes protect people who live near industrial plants from air pollution indoors. I use computer models and statistics to estimate how much pollution gets into homes, and how often it crosses health limits. My case study looks at Beaumont-Port Arthur, Texas.</p>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
+                <div class="dc-research-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
 
                   <div style="border:1px solid #141414;display:flex;flex-direction:column">
                     <div style="padding:22px 22px 8px;flex:1">
@@ -289,7 +330,7 @@
                           <div style="display:flex;align-items:flex-end;gap:6px;height:110px;border-bottom:1px solid rgba(0,0,0,.2)">
                             <sc-for list="{{ iaqBars }}" as="bar" hint-placeholder-count="8">
                               <div onMouseEnter="{{ bar.enter }}" onMouseLeave="{{ bar.leave }}" style="position:relative;width:26px;height:100%;display:flex;align-items:flex-end;cursor:pointer">
-                                <div style="width:100%;background:#b6512f;height:{{ bar.h }}%;transform-origin:bottom;animation:growbar 1.2s ease-out both;transition:background .15s" style-hover="background:#141414"></div>
+                                <div style="width:100%;background:#8B5E3C;height:{{ bar.h }}%;transform-origin:bottom;animation:growbar 4s ease-in-out infinite;transition:background .15s" style-hover="background:#141414"></div>
                               </div>
                             </sc-for>
                           </div>
@@ -297,8 +338,8 @@
                         </div>
                       </div>
                     </div>
-                    <div style="border-top:1px solid #141414;padding:14px 22px;background:#faf9f5;min-height:64px">
-                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 1.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">{{ iaqCaption }}</span>
+                    <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 22px;min-height:64px">
+                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 1.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">{{ iaqCaption }}</span>
                     </div>
                   </div>
 
@@ -307,22 +348,22 @@
                       <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIGURE 2 · ILLUSTRATIVE MODEL OUTPUT</div>
                       <svg viewBox="0 0 360 200" width="100%" height="185">
                         <text x="6" y="14" font-size="9" fill="#888" font-family="ui-monospace,monospace" transform="rotate(-90 6 14)" text-anchor="middle">SUFFICIENCY PROBABILITY (%)</text>
-                        <line x1="30" y1="10" x2="30" y2="155" stroke="#ccc" stroke-width="1" stroke-dasharray="200" stroke-dashoffset="200"><animate attributeName="stroke-dashoffset" from="200" to="0" dur="1s" fill="freeze"/></line>
-                        <line x1="30" y1="155" x2="330" y2="155" stroke="#ccc" stroke-width="1" stroke-dasharray="350" stroke-dashoffset="350"><animate attributeName="stroke-dashoffset" from="350" to="0" dur="1s" fill="freeze" begin=".2s"/></line>
+                        <line x1="30" y1="10" x2="30" y2="155" stroke="#ccc" stroke-width="1" stroke-dasharray="200" stroke-dashoffset="200"><animate attributeName="stroke-dashoffset" values="200;0;200" dur="4s" repeatCount="indefinite"/></line>
+                        <line x1="30" y1="155" x2="330" y2="155" stroke="#ccc" stroke-width="1" stroke-dasharray="350" stroke-dashoffset="350"><animate attributeName="stroke-dashoffset" values="350;0;350" dur="4s" repeatCount="indefinite" begin=".2s"/></line>
                         <text x="180" y="182" font-size="9" fill="#888" font-family="ui-monospace,monospace" text-anchor="middle">CODE ERA (OLDEST → NEWEST)</text>
-                        <polyline points="30,135 90,105 150,115 210,55 270,75 330,25" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="500" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" from="500" to="0" dur="2s" fill="freeze"/></polyline>
+                        <polyline points="30,135 90,105 150,115 210,55 270,75 330,25" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="500" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" values="500;0;500" dur="5s" repeatCount="indefinite"/></polyline>
                         <sc-for list="{{ cspPoints }}" as="pt" hint-placeholder-count="6">
-                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="5" fill="#141414" opacity="0" onMouseEnter="{{ pt.enter }}" onMouseLeave="{{ pt.leave }}" style="cursor:pointer;transition:fill .15s,r .15s;transform-box:fill-box;transform-origin:center" style-hover="fill:#b6512f;r:7"><animate attributeName="opacity" from="0" to="1" dur=".4s" fill="freeze" begin="1.2s"/></circle>
+                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="5" fill="#141414" onMouseEnter="{{ pt.enter }}" onMouseLeave="{{ pt.leave }}" style="cursor:pointer;transition:fill .15s,r .15s;transform-box:fill-box;transform-origin:center" style-hover="fill:#8B5E3C;r:7"><animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite"/></circle>
                         </sc-for>
                       </svg>
                     </div>
-                    <div style="border-top:1px solid #141414;padding:14px 22px;background:#faf9f5;min-height:64px">
-                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 2.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">{{ cspCaption }}</span>
+                    <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 22px;min-height:64px">
+                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 2.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">{{ cspCaption }}</span>
                     </div>
                   </div>
 
                 </div>
-                <a href="./Research.html" style="display:inline-block;margin-top:16px;text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#b6512f" style-hover="color:#141414">READ FULL PAPER &#8594;</a>
+                <a href="./Research.html" style="display:inline-block;margin-top:16px;text-decoration:none;font:italic 500 12px Newsreader,serif;color:#8B5E3C;border-bottom:1px solid rgba(182,81,47,.2);transition:border-color .2s" style-hover="border-color:#8B5E3C">read full paper →</a>
               </div>
             </sc-if>
 
@@ -330,24 +371,24 @@
               <div>
                 <div style="font:500 20px Newsreader,serif;margin-bottom:8px">Building Energy Modeling &amp; Comfort</div>
                 <p style="font:400 13.5px/1.7 Inter,sans-serif;color:#444;margin-bottom:24px;max-width:820px">I build energy models of buildings to see how design choices affect comfort and cooling energy. This includes testing insulation materials under future climates, predicting indoor temperature with machine learning, and studying low-energy comfort tools like ceiling fans.</p>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
+                <div class="dc-research-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
 
                   <div style="border:1px solid #141414;display:flex;flex-direction:column">
                     <div style="padding:22px 22px 8px;flex:1">
                       <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIGURE 3 · ILLUSTRATIVE MODEL OUTPUT</div>
                       <svg viewBox="0 0 300 200" width="100%" height="175">
-                        <line x1="30" y1="10" x2="30" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="180" stroke-dashoffset="180"><animate attributeName="stroke-dashoffset" from="180" to="0" dur="1s" fill="freeze"/></line>
-                        <line x1="30" y1="150" x2="290" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="280" stroke-dashoffset="280"><animate attributeName="stroke-dashoffset" from="280" to="0" dur="1s" fill="freeze" begin=".2s"/></line>
+                        <line x1="30" y1="10" x2="30" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="180" stroke-dashoffset="180"><animate attributeName="stroke-dashoffset" values="180;0;180" dur="4s" repeatCount="indefinite"/></line>
+                        <line x1="30" y1="150" x2="290" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="280" stroke-dashoffset="280"><animate attributeName="stroke-dashoffset" values="280;0;280" dur="4s" repeatCount="indefinite" begin=".2s"/></line>
                         <text x="8" y="80" font-size="8.5" fill="#888" font-family="ui-monospace,monospace" text-anchor="middle" transform="rotate(-90 8 80)">MODEL PREDICTED (°F)</text>
                         <text x="160" y="176" font-size="8.5" fill="#888" font-family="ui-monospace,monospace" text-anchor="middle">MEASURED (°F)</text>
-                        <line x1="30" y1="150" x2="290" y2="20" stroke="rgba(0,0,0,.2)" stroke-width="1" stroke-dasharray="3 3" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" from="500" to="0" dur="1.5s" fill="freeze"/></line>
+                        <line x1="30" y1="150" x2="290" y2="20" stroke="rgba(0,0,0,.2)" stroke-width="1" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" values="500;0;500" dur="5s" repeatCount="indefinite"/></line>
                         <sc-for list="{{ comfortDots }}" as="pt" hint-placeholder-count="14">
-                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="0" fill="oklch(45% 0.02 250)" style="transition:transform .15s,fill .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.8);fill:#b6512f"><animate attributeName="r" from="0" to="3.5" dur=".3s" fill="freeze" begin="1s"/><title>{{ pt.label }}</title></circle>
+                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#8B5E3C" style="transition:transform .15s,fill .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.8);fill:#8B5E3C"><animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite"/><title>{{ pt.label }}</title></circle>
                         </sc-for>
                       </svg>
                     </div>
-                    <div style="border-top:1px solid #141414;padding:14px 22px;background:#faf9f5;min-height:64px">
-                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 3.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">Machine-learning model predictions against measured indoor temperature in mixed-mode buildings. Points near the dashed line show close agreement; this approach cut estimated cooling loads by up to 60 percent. Hover a point for its reading.</span>
+                    <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 22px;min-height:64px">
+                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 3.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">Machine-learning model predictions against measured indoor temperature in mixed-mode buildings. Points near the dashed line show close agreement; this approach cut estimated cooling loads by up to 60 percent. Hover a point for its reading.</span>
                     </div>
                   </div>
 
@@ -356,60 +397,60 @@
                       <div style="font:400 10px ui-monospace,monospace;color:#888;letter-spacing:.06em;margin-bottom:14px">FIGURE 4 · ILLUSTRATIVE MODEL OUTPUT</div>
                       <svg viewBox="0 0 340 210" width="100%" height="185">
                         <text x="8" y="80" font-size="8.5" fill="#888" font-family="ui-monospace,monospace" text-anchor="middle" transform="rotate(-90 8 80)">COOLING ENERGY (RELATIVE)</text>
-                        <line x1="30" y1="10" x2="30" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="180" stroke-dashoffset="180"><animate attributeName="stroke-dashoffset" from="180" to="0" dur="1s" fill="freeze"/></line>
-                        <line x1="30" y1="150" x2="330" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="320" stroke-dashoffset="320"><animate attributeName="stroke-dashoffset" from="320" to="0" dur="1s" fill="freeze" begin=".2s"/></line>
+                        <line x1="30" y1="10" x2="30" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="180" stroke-dashoffset="180"><animate attributeName="stroke-dashoffset" values="180;0;180" dur="4s" repeatCount="indefinite"/></line>
+                        <line x1="30" y1="150" x2="330" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="320" stroke-dashoffset="320"><animate attributeName="stroke-dashoffset" values="320;0;320" dur="4s" repeatCount="indefinite" begin=".2s"/></line>
                         <text x="180" y="176" font-size="8.5" fill="#888" font-family="ui-monospace,monospace" text-anchor="middle">FUTURE WEATHER YEAR</text>
                         <sc-for list="{{ standardPts }}" as="pt" hint-placeholder-count="6">
-                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="0" fill="#b6512f" style="transition:transform .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.7)"><animate attributeName="r" from="0" to="3" dur=".3s" fill="freeze" begin="1.2s"/><title>{{ pt.label }}</title></circle>
+                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3" fill="#8B5E3C" style="transition:transform .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.7)"><animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite"/><title>{{ pt.label }}</title></circle>
                         </sc-for>
-                        <polyline points="30,130 90,120 150,90 210,80 270,50 330,40" fill="none" stroke="#b6512f" stroke-width="2" stroke-dasharray="400" stroke-dashoffset="400"><animate attributeName="stroke-dashoffset" from="400" to="0" dur="2s" fill="freeze"/></polyline>
+                        <polyline points="30,130 90,120 150,90 210,80 270,50 330,40" fill="none" stroke="#8B5E3C" stroke-width="2" stroke-dasharray="400" stroke-dashoffset="400"><animate attributeName="stroke-dashoffset" values="400;0;400" dur="5s" repeatCount="indefinite"/></polyline>
                         <sc-for list="{{ improvedPts }}" as="pt" hint-placeholder-count="6">
-                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="0" fill="#141414" style="transition:transform .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.7)"><animate attributeName="r" from="0" to="3" dur=".3s" fill="freeze" begin="1.8s"/><title>{{ pt.label }}</title></circle>
+                          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3" fill="#141414" style="transition:transform .15s;transform-box:fill-box;transform-origin:center" style-hover="transform:scale(1.7)"><animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite" begin="1s"/><title>{{ pt.label }}</title></circle>
                         </sc-for>
-                        <polyline points="30,140 90,135 150,125 210,130 270,115 330,120" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="4 3" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="1s" fill="freeze" begin=".5s"/></polyline>
+                        <polyline points="30,140 90,135 150,125 210,130 270,115 330,120" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="4 3"><animate attributeName="opacity" values="0;1;1;0" dur="5s" repeatCount="indefinite" begin=".5s"/></polyline>
                       </svg>
                       <div style="display:flex;gap:18px;margin-top:2px">
-                        <div style="display:flex;align-items:center;gap:6px;font:400 10.5px Inter,sans-serif;color:#555"><span style="width:16px;height:2px;background:#b6512f;display:inline-block"></span>Standard insulation</div>
+                        <div style="display:flex;align-items:center;gap:6px;font:400 10.5px Inter,sans-serif;color:#555"><span style="width:16px;height:2px;background:#8B5E3C;display:inline-block"></span>Standard insulation</div>
                         <div style="display:flex;align-items:center;gap:6px;font:400 10.5px Inter,sans-serif;color:#555"><span style="width:16px;height:2px;background:#141414;display:inline-block;background-image:linear-gradient(90deg,#141414 60%,transparent 0);background-size:6px 2px"></span>Improved insulation</div>
                       </div>
                     </div>
-                    <div style="border-top:1px solid #141414;padding:14px 22px;background:#faf9f5;min-height:64px">
-                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 4.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">Modeled cooling energy for two insulation types across future weather years, from an EnergyPlus ensemble study. Improved insulation stays lower as climates get hotter. Hover a point for its value.</span>
+                    <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 22px;min-height:64px">
+                      <b style="font:600 12px Inter,sans-serif;color:#141414">Figure 4.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">Modeled cooling energy for two insulation types across future weather years, from an EnergyPlus ensemble study. Improved insulation stays lower as climates get hotter. Hover a point for its value.</span>
                     </div>
                   </div>
 
                 </div>
-                <a href="./Research.html" style="display:inline-block;margin-top:16px;text-decoration:none;font:500 11px ui-monospace,monospace;letter-spacing:.04em;color:#b6512f" style-hover="color:#141414">READ FULL PAPER &#8594;</a>
+                <a href="./Research.html" style="display:inline-block;margin-top:16px;text-decoration:none;font:italic 500 12px Newsreader,serif;color:#8B5E3C;border-bottom:1px solid rgba(182,81,47,.2);transition:border-color .2s" style-hover="border-color:#8B5E3C">read full paper →</a>
               </div>
             </sc-if>
           </div>
 
-          <div id="2a-building" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealBuilding }}">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:20px">EXPLORE THE BUILDING</div>
+          <div id="2a-building" class="dc-section" style="padding:52px 60px;background:#fdfdfc;transition:opacity .7s ease,transform .7s ease;{{ revealBuilding }}">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:20px">Explore the building</div>
             <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:stretch">
               <div style="height:420px;border:1px solid rgba(0,0,0,.12);position:relative;overflow:hidden">
                 <three-d-stage ref="{{ stageRef }}" name="aritro-building" background="#fdfdfc" autorotate="" style="position:absolute;inset:0;width:100%;height:100%"></three-d-stage>
               </div>
               <div style="border:1px solid rgba(0,0,0,.12);padding:22px;display:flex;flex-direction:column;justify-content:center">
-                <div style="font:400 10px ui-monospace,monospace;color:#b6512f;letter-spacing:.06em;margin-bottom:8px">{{ selectedLabel }}</div>
+                <div style="font:italic 400 11px Newsreader,serif;color:#8B5E3C;margin-bottom:8px">{{ selectedLabel }}</div>
                 <div style="font:500 20px Newsreader,serif;margin-bottom:10px">{{ selectedTitle }}</div>
                 <p style="font:400 13.5px/1.7 Inter,sans-serif;color:#444">{{ selectedBody }}</p>
               </div>
             </div>
-            <div style="margin-top:14px;padding-top:10px;border-top:1px solid #141414"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 5.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">A simple one-floor building model. Roof, walls, windows, door, rooftop unit, solar panel, sensor, and foundation each link to a research area or role. Click a part to explore.</span></div>
+            <div style="margin-top:14px"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 5.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">A simple one-floor building model. Roof, walls, windows, door, rooftop unit, solar panel, sensor, and foundation each link to a research area or role. Click a part to explore.</span></div>
           </div>
 
-          <div id="2a-experience" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealExperience }}">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:6px">EXPERIENCE</div>
-            <div style="font:400 13px/1.6 Inter,sans-serif;color:#555;margin-bottom:20px">Click a role to read more.</div>
+          <div id="2a-experience" class="dc-section" style="padding:52px 60px;background:#fff;border-left:3px solid #8B5E3C;transition:opacity .7s ease,transform .7s ease;{{ revealExperience }}">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:6px">Experience</div>
+            <div style="font:400 13px/1.6 Inter,sans-serif;color:#777;margin-bottom:20px">Click a role to read more.</div>
             <div style="display:flex;flex-direction:column">
               <sc-for list="{{ experienceItems }}" as="exp" hint-placeholder-count="4">
                 <div style="border-top:1px solid rgba(0,0,0,.12)">
                   <div onClick="{{ exp.toggle }}" style="display:flex;gap:20px;padding:16px 0;cursor:pointer;align-items:baseline">
-                    <div style="width:10px;height:10px;border-radius:50%;background:#b6512f;flex:none;transition:transform .2s" style-hover="transform:scale(1.6)"></div>
+                    <div style="width:10px;height:10px;border-radius:50%;background:#8B5E3C;flex:none;transition:transform .2s" style-hover="transform:scale(1.6)"></div>
                     <div style="flex:1;display:flex;justify-content:space-between">
                       <div style="font:500 16px Newsreader,serif">{{ exp.title }}</div>
-                      <div style="display:flex;gap:14px;align-items:baseline"><div style="font:400 11px ui-monospace,monospace;color:#888">{{ exp.period }}</div><div style="font:400 13px ui-monospace,monospace;color:#b6512f">{{ exp.marker }}</div></div>
+                      <div style="display:flex;gap:14px;align-items:baseline"><div style="font:400 11px ui-monospace,monospace;color:#888">{{ exp.period }}</div><div style="font:400 13px ui-monospace,monospace;color:#8B5E3C">{{ exp.marker }}</div></div>
                     </div>
                   </div>
                   <sc-if value="{{ exp.isOpen }}" hint-placeholder-val="{{ false }}">
@@ -421,12 +462,12 @@
               </sc-for>
               <div style="border-top:1px solid rgba(0,0,0,.12)"></div>
             </div>
-            <div style="margin-top:14px;padding-top:10px;border-top:1px solid #141414"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 6.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">Career timeline, 2022 to present. Work moves from hands-on field research and fieldwork toward policy design and technical review.</span></div>
+            <div style="margin-top:14px"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 6.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">Career timeline, 2022 to present. Work moves from hands-on field research and fieldwork toward policy design and technical review.</span></div>
           </div>
 
-          <div id="2a-projects" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealProjects }}">
+          <div id="2a-projects" class="dc-section" style="padding:52px 60px;background:#fdfdfc;transition:opacity .7s ease,transform .7s ease;{{ revealProjects }}">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px">
-              <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em">FEATURED PROJECTS</div>
+              <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C">Selected work</div>
               <div style="display:flex;align-items:center;gap:14px">
                 <div style="font:400 10px ui-monospace,monospace;color:#999">{{ projectCounter }}</div>
                 <div style="display:flex;gap:6px">
@@ -435,18 +476,20 @@
                 </div>
               </div>
             </div>
-            <div style="overflow:hidden">
-              <div style="display:flex;gap:20px;transition:transform .35s ease;{{ projectTrackStyle }}">
+            <div style="overflow:hidden" onMouseEnter="{{ pauseCarousel }}" onMouseLeave="{{ resumeCarousel }}">
+              <div style="display:flex;gap:20px;transition:transform .6s cubic-bezier(.4,0,.2,1);{{ projectTrackStyle }}">
                 <sc-for list="{{ projectsList }}" as="p" hint-placeholder-count="6">
-                  <div style="position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.1);flex:0 0 300px">
-                    <div style="height:150px;position:relative;overflow:hidden"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;top:8px;left:8px;font:600 11px Inter,sans-serif;color:#141414;background:#fff;padding:1px 6px">{{ p.letter }}</span></div>
-                    <div style="padding:12px 14px"><div style="font:500 16px Newsreader,serif">{{ p.name }}</div><div style="font:400 12px Inter,sans-serif;color:#777;margin-top:2px">{{ p.meta }}</div></div>
-                    <div style="position:absolute;inset:0;background:rgba(20,20,20,.92);color:#fff;padding:18px;opacity:0;transition:opacity .2s;display:flex;flex-direction:column;justify-content:center" style-hover="opacity:1">
-                      <div style="font:500 15px Newsreader,serif;margin-bottom:8px">{{ p.name }}</div>
-                      <div style="font:400 11px ui-monospace,monospace;color:rgba(255,255,255,.6)">ROLE</div><div style="font:400 12px Inter,sans-serif;margin-bottom:8px">{{ p.role }}</div>
-                      <div style="font:400 11px ui-monospace,monospace;color:rgba(255,255,255,.6)">DELIVERABLES</div><div style="font:400 12px Inter,sans-serif">{{ p.deliverables }}</div>
+                  <a href="{{ p.href }}" style="text-decoration:none;color:inherit;display:block;flex:0 0 300px">
+                    <div style="position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.1);width:300px;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08)">
+                      <div style="height:150px;position:relative;overflow:hidden"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;top:8px;left:8px;font:600 11px Inter,sans-serif;color:#141414;background:#fff;padding:1px 6px">{{ p.letter }}</span></div>
+                      <div style="padding:12px 14px"><div style="font:500 16px Newsreader,serif">{{ p.name }}</div><div style="font:400 12px Inter,sans-serif;color:#777;margin-top:2px">{{ p.meta }}</div></div>
+                      <div style="position:absolute;inset:0;background:rgba(20,20,20,.92);color:#fff;padding:18px;opacity:0;transition:opacity .2s;display:flex;flex-direction:column;justify-content:center" style-hover="opacity:1">
+                        <div style="font:500 15px Newsreader,serif;margin-bottom:8px">{{ p.name }}</div>
+                        <div style="font:400 11px ui-monospace,monospace;color:rgba(255,255,255,.7)">ROLE</div><div style="font:400 12px Inter,sans-serif;margin-bottom:8px">{{ p.role }}</div>
+                        <div style="font:400 11px ui-monospace,monospace;color:rgba(255,255,255,.7)">DELIVERABLES</div><div style="font:400 12px Inter,sans-serif">{{ p.deliverables }}</div>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </sc-for>
               </div>
             </div>
@@ -455,13 +498,13 @@
                 <button onClick="{{ dot.goTo }}" style="{{ dot.style }}"></button>
               </sc-for>
             </div>
-            <div style="margin-top:14px;padding-top:10px;border-top:1px solid #141414"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 7.</b> <span style="font:400 12.5px/1.6 Newsreader,serif;font-style:italic;color:#333">Selected projects, (a)–(f): ORD International School, Reconnect!, Tending the Flow, Harmony Heights, Pune Residence, and Delhi Residence.</span></div>
-            <div style="margin-top:12px"><a href="./Projects.html" style="font:500 11px ui-monospace,monospace;letter-spacing:.06em;color:#b6512f;text-decoration:none">VIEW ALL PROJECTS →</a></div>
+            <div style="margin-top:14px"><b style="font:600 12px Inter,sans-serif;color:#141414">Figure 7.</b> <span style="font:italic 400 12.5px/1.6 Newsreader,serif;color:#888">Selected projects, (a)–(f): ORD International School, Reconnect!, Tending the Flow, Harmony Heights, Pune Residence, and Delhi Residence.</span></div>
+            <div style="margin-top:12px"><a href="./Projects.html" style="font:italic 500 12px Newsreader,serif;color:#8B5E3C;text-decoration:none;border-bottom:1px solid rgba(182,81,47,.2);transition:border-color .2s" style-hover="border-color:#8B5E3C">see all projects →</a></div>
           </div>
 
-          <div id="2a-skills" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealSkills }}">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:24px">SKILLS</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+          <div id="2a-skills" class="dc-section" style="padding:40px 60px;background:#fff;transition:opacity .7s ease,transform .7s ease;{{ revealSkills }}">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:20px">Skills</div>
+            <div class="dc-skills-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
               <div>
                 <div style="font:500 13px Inter,sans-serif;color:#141414;margin-bottom:10px">Analytics &amp; Modeling</div>
                 <div style="display:flex;flex-wrap:wrap;gap:6px">
@@ -496,29 +539,29 @@
             </div>
           </div>
 
-          <div id="2a-tools" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealTools }}">
+          <div id="2a-tools" class="dc-section" style="padding:52px 60px;background:#fdfdfc;transition:opacity .7s ease,transform .7s ease;{{ revealTools }}">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-              <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em">TOOLS</div>
-              <div style="font:400 10px ui-monospace,monospace;color:#999">{{ toolsCount }} SHOWN</div>
+              <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C">Tools</div>
+              <div style="font:italic 400 10px Newsreader,serif;color:#999">{{ toolsCount }} tools</div>
             </div>
-            <div style="font:400 13px/1.6 Inter,sans-serif;color:#555;margin-bottom:16px">A collection of engineering calculators and tools.</div>
+            <div style="font:italic 400 13px/1.6 Newsreader,serif;color:#777;margin-bottom:16px">A collection of engineering calculators and tools.</div>
             <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
               <button style="{{ filterAllStyle }}" onClick="{{ setFilterAll }}">All</button>
               <button style="{{ filterEnergyStyle }}" onClick="{{ setFilterEnergy }}">Energy</button>
               <button style="{{ filterPolicyStyle }}" onClick="{{ setFilterPolicy }}">Policy &amp; Climate</button>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="dc-tools-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
               <sc-for list="{{ toolsList }}" as="tool" hint-placeholder-count="4">
                 <a href="{{ tool.href }}" style="{{ tool.style }}" onMouseEnter="{{ tool.enter }}" onMouseLeave="{{ tool.leave }}">
                   <div style="display:flex;justify-content:space-between;align-items:flex-start">
-                    <div style="font:400 10px ui-monospace,monospace;color:#b6512f">{{ tool.index }}</div>
+                    <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C">{{ tool.index }}</div>
                     <div style="{{ tool.arrowStyle }}">↗</div>
                   </div>
                   <div style="font:500 15px Newsreader,serif;color:#141414;margin:6px 0 4px">{{ tool.name }}</div>
                   <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
                     <div style="font:400 10px ui-monospace,monospace;color:#999">{{ tool.source }}</div>
                     <div style="width:3px;height:3px;border-radius:50%;background:#ccc"></div>
-                    <div style="font:400 10px ui-monospace,monospace;color:#b6512f">{{ tool.category }}</div>
+                    <div style="font:400 10px ui-monospace,monospace;color:#8B5E3C">{{ tool.category }}</div>
                   </div>
                   <div style="font:400 12.5px/1.5 Inter,sans-serif;color:#555">{{ tool.desc }}</div>
                 </a>
@@ -526,25 +569,25 @@
             </div>
           </div>
 
-          <div id="2a-pubs" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);transition:opacity .7s ease,transform .7s ease;{{ revealPubs }}">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:20px">PUBLICATIONS</div>
-            <div style="display:flex;flex-direction:column;gap:14px">
-              <div style="display:flex;gap:14px"><div style="width:22px;height:22px;border-radius:50%;background:#141414;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font:400 10px ui-monospace,monospace">1</div><div style="font:400 13px/1.6 Inter,sans-serif;color:#333;transition:color .15s" style-hover="color:#b6512f">De, A. &amp; Kabre, C. (2025) Impact of ceiling fans on thermal comfort and energy efficiency in institutional buildings. IBPSA.</div></div>
-              <div style="display:flex;gap:14px"><div style="width:22px;height:22px;border-radius:50%;background:#141414;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font:400 10px ui-monospace,monospace">2</div><div style="font:400 13px/1.6 Inter,sans-serif;color:#333;transition:color .15s" style-hover="color:#b6512f">De, A. &amp; Garrison, M. (2026) Statistical convergence of insulation material cooling performance under SSP-morphed climate scenarios. ASCE JAE (under review).</div></div>
-              <div style="display:flex;gap:14px"><div style="width:22px;height:22px;border-radius:50%;background:#141414;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font:400 10px ui-monospace,monospace">3</div><div style="font:400 13px/1.6 Inter,sans-serif;color:#333;transition:color .15s" style-hover="color:#b6512f">De, A. &amp; Felkner, J. (2026) Neuro-Symbolic AI for LEED compliance. arXiv:2607.15647 (under review).</div></div>
-              <div style="display:flex;gap:14px"><div style="width:22px;height:22px;border-radius:50%;background:#141414;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font:400 10px ui-monospace,monospace">4</div><div style="font:400 13px/1.6 Inter,sans-serif;color:#333;transition:color .15s" style-hover="color:#b6512f">De, A. et al. (2026) Outcome-based code sufficiency for residential IAQ in an industrial fenceline community. ESS Open Archive.</div></div>
+          <div id="2a-pubs" class="dc-section" style="padding:52px 60px;background:#fff;transition:opacity .7s ease,transform .7s ease;{{ revealPubs }}">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:20px">Publications</div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="font:400 13px/1.7 Newsreader,serif;color:#333;transition:color .15s;padding-left:0" style-hover="color:#8B5E3C"><span style="font:400 12px/1.7 Newsreader,serif;color:#999">(2025)</span> De, A. &amp; Kabre, C. Impact of ceiling fans on thermal comfort and energy efficiency in institutional buildings. <em>IBPSA.</em></div>
+              <div style="font:400 13px/1.7 Newsreader,serif;color:#333;transition:color .15s;padding-left:0" style-hover="color:#8B5E3C"><span style="font:400 12px/1.7 Newsreader,serif;color:#999">(2026)</span> De, A. &amp; Garrison, M. Statistical convergence of insulation material cooling performance under SSP-morphed climate scenarios. <em>ASCE JAE</em> (under review).</div>
+              <div style="font:400 13px/1.7 Newsreader,serif;color:#333;transition:color .15s;padding-left:0" style-hover="color:#8B5E3C"><span style="font:400 12px/1.7 Newsreader,serif;color:#999">(2026)</span> De, A. &amp; Felkner, J. Neuro-Symbolic AI for LEED compliance. <em>arXiv:2607.15647</em> (under review).</div>
+              <div style="font:400 13px/1.7 Newsreader,serif;color:#333;transition:color .15s;padding-left:0" style-hover="color:#8B5E3C"><span style="font:400 12px/1.7 Newsreader,serif;color:#999">(2026)</span> De, A. et al. Outcome-based code sufficiency for residential IAQ in an industrial fenceline community. <em>ESS Open Archive.</em></div>
             </div>
           </div>
 
-          <div style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12)">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:12px">CURRENTLY LISTENING</div>
+          <div style="padding:52px 60px;background:#fdfdfc;border-bottom:1px solid rgba(0,0,0,.06)">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:16px">Currently listening</div>
             <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1EIgrEQA5FONTg?utm_source=generator&si=ece341d572a94604" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
 
-          <div style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);background:linear-gradient(168deg,#faf7f2 0%,#f5f0ea 100%)">
-            <div style="font:400 11px ui-monospace,monospace;color:#b6512f;letter-spacing:.08em;margin-bottom:28px">CURRENTLY READING</div>
-            <div style="display:flex;gap:48px;align-items:center">
-              <div style="flex-shrink:0;display:flex;justify-content:center;align-items:center;width:200px">
+          <div class="dc-section dc-reading-section" style="padding:44px 60px;border-bottom:1px solid rgba(0,0,0,.12);background:linear-gradient(168deg,#faf7f2 0%,#f5f0ea 100%)">
+            <div style="font:italic 500 22px Newsreader,serif;color:#8B5E3C;margin-bottom:28px">Currently reading</div>
+            <div class="dc-reading-flex" style="display:flex;gap:48px;align-items:center">
+              <div class="dc-reading-svg" style="flex-shrink:0;display:flex;justify-content:center;align-items:center;width:200px">
                 <svg viewBox="0 0 160 200" width="180" height="220" fill="none" stroke="#141414" stroke-linecap="round" stroke-linejoin="round">
                   <!-- base -->
                   <path d="M32 174 C 32 178 38 182 44 182 L 116 182 C 122 182 128 178 128 174" stroke-width="1.2"></path>
@@ -585,30 +628,30 @@
                   </g>
                 </svg>
               </div>
-              <div style="flex:1;min-width:0">
+              <div class="dc-reading-text dc-section" style="flex:1;min-width:0">
                 <div style="font:italic 400 13px Newsreader,serif;color:#999;margin-bottom:6px">a novel</div>
-                <div style="font:600 28px/1.2 Newsreader,serif;color:#141414;margin-bottom:2px"><a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.12);transition:border-color .2s" style-hover="border-color:#b6512f">The Bell Jar</a></div>
+                <div style="font:600 28px/1.2 Newsreader,serif;color:#141414;margin-bottom:2px"><a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.12);transition:border-color .2s" style-hover="border-color:#8B5E3C">The Bell Jar</a></div>
                 <div style="font:400 14px Inter,sans-serif;color:#777;margin-bottom:20px">Sylvia Plath · 1963</div>
                 <!-- ornamental divider -->
                 <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
                   <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.12),transparent)"></div>
-                  <svg viewBox="0 0 16 8" width="16" height="8" fill="none" stroke="#b6512f" stroke-linecap="round"><path d="M2 4 C 4 1 6 1 8 4 C 10 1 12 1 14 4" stroke-width=".8"></path></svg>
+                  <svg viewBox="0 0 16 8" width="16" height="8" fill="none" stroke="#8B5E3C" stroke-linecap="round"><path d="M2 4 C 4 1 6 1 8 4 C 10 1 12 1 14 4" stroke-width=".8"></path></svg>
                   <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.12),transparent)"></div>
                 </div>
                 <blockquote style="font:italic 400 16px/1.8 Newsreader,serif;color:#555;margin:0 0 24px;position:relative;padding-left:20px;border-left:none">
-                  <span style="position:absolute;left:0;top:0;font:italic 600 28px Newsreader,serif;color:#b6512f;opacity:.25;line-height:1">"</span>
+                  <span style="position:absolute;left:0;top:0;font:italic 600 28px Newsreader,serif;color:#8B5E3C;opacity:.25;line-height:1">"</span>
                   That afternoon my mother had brought me the roses. 'Save them for my funeral,' I'd said.
                 </blockquote>
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                  <a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#b6512f;border:1px solid #b6512f;padding:7px 14px;transition:all .2s" style-hover="background:#b6512f;color:#fff">GOODREADS →</a>
-                  <a href="https://aritrode.com/reading-list/" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#141414;border:1px solid rgba(0,0,0,.2);padding:7px 14px;transition:all .2s" style-hover="border-color:#b6512f;color:#b6512f">FULL READING LIST →</a>
+                <div class="dc-reading-buttons" style="display:flex;gap:10px;flex-wrap:wrap">
+                  <a href="https://www.goodreads.com/book/show/56616095-the-bell-jar" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#8B5E3C;border:1px solid #8B5E3C;padding:7px 14px;transition:all .2s" style-hover="background:#8B5E3C;color:#fff">GOODREADS →</a>
+                  <a href="https://aritrode.com/reading-list/" style="text-decoration:none;font:500 10px ui-monospace,monospace;letter-spacing:.06em;color:#141414;border:1px solid rgba(0,0,0,.2);padding:7px 14px;transition:all .2s" style-hover="border-color:#8B5E3C;color:#8B5E3C">FULL READING LIST →</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div id="2a-contact" style="padding:44px 60px 60px;display:flex;justify-content:space-between;align-items:center;transition:opacity .7s ease,transform .7s ease;{{ revealContact }}">
-            <div style="font:400 13px Inter,sans-serif;color:#333">aritrode12@gmail.com · Austin, TX</div>
+          <div id="2a-contact" class="dc-contact dc-section" style="padding:40px 60px 50px;display:flex;justify-content:space-between;align-items:center;transition:opacity .7s ease,transform .7s ease;{{ revealContact }}">
+            <div style="font:400 12px Inter,sans-serif;color:#888">aritrode12@gmail.com · Austin, TX</div>
           </div>
 </div>
 
@@ -657,12 +700,12 @@ const HEADLINES = [
 ];
 
 const PROJECTS_DATA = [
-  { letter: 'a', name: 'ORD International School', meta: 'Solar Decathlon India, 2020–21', role: 'Structural, Renewable Energy & Energy Efficiency', deliverables: 'Project report, presentation, pitch', img: './images/projects/ord.png' },
-  { letter: 'b', name: 'Reconnect!', meta: 'Thesis, School of Planning and Architecture, New Delhi', role: 'Lead Designer & Researcher', deliverables: 'Design thesis, drawings, report', img: './images/projects/reconnect.png' },
-  { letter: 'c', name: 'Tending the Flow', meta: 'ULI Hines Student Urban Design Competition, 2025', role: 'Urban Designer & Researcher', deliverables: 'Design proposals, research documentation', img: './images/projects/tending.png' },
-  { letter: 'd', name: 'Harmony Heights', meta: 'Housing Studio, 2021', role: 'Designer', deliverables: 'Housing design, site plan, drawings', img: './images/projects/harmony.png' },
-  { letter: 'e', name: 'Pune Residence', meta: 'Put Your Hands Together (PYHT) Architects', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, design recommendations', img: './images/projects/pune.jpg' },
-  { letter: 'f', name: 'Delhi Residence', meta: 'Dastkari X', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, material recommendations', img: './images/projects/delhi.png' }
+  { letter: 'a', name: 'ORD International School', meta: 'Solar Decathlon India, 2020–21', role: 'Structural, Renewable Energy & Energy Efficiency', deliverables: 'Project report, presentation, pitch', img: './images/projects/ord.png', href: './Projects.html' },
+  { letter: 'b', name: 'Reconnect!', meta: 'Thesis, School of Planning and Architecture, New Delhi', role: 'Lead Designer & Researcher', deliverables: 'Design thesis, drawings, report', img: './images/projects/reconnect.png', href: './Projects.html' },
+  { letter: 'c', name: 'Tending the Flow', meta: 'ULI Hines Student Urban Design Competition, 2025', role: 'Urban Designer & Researcher', deliverables: 'Design proposals, research documentation', img: './images/projects/tending.png', href: './Projects.html' },
+  { letter: 'd', name: 'Harmony Heights', meta: 'Housing Studio, 2021', role: 'Designer', deliverables: 'Housing design, site plan, drawings', img: './images/projects/harmony.png', href: './Projects.html' },
+  { letter: 'e', name: 'Pune Residence', meta: 'Put Your Hands Together (PYHT) Architects', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, design recommendations', img: './images/projects/pune.jpg', href: './Projects.html' },
+  { letter: 'f', name: 'Delhi Residence', meta: 'Dastkari X', role: 'Sustainability Consultant', deliverables: 'Sustainability strategy, material recommendations', img: './images/projects/delhi.png', href: './Projects.html' }
 ];
 
 const TOOLS_DATA = [
@@ -731,6 +774,12 @@ class Component extends DCLogic {
     };
     step();
 
+    this._carouselTimer = setInterval(() => {
+      const max = PROJECTS_DATA.length - 3;
+      const cur = this.state.projectIndex;
+      this.setState({ projectIndex: cur >= max ? 0 : cur + 1 });
+    }, 3000);
+
     const ids = ['2a-research', '2a-building', '2a-experience', '2a-projects', '2a-skills', '2a-tools', '2a-pubs', '2a-contact'];
     const firstEl = document.getElementById(ids[0]);
     const root = firstEl ? firstEl.closest('.pane') : null;
@@ -750,6 +799,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this._typeTimer) clearTimeout(this._typeTimer);
+    if (this._carouselTimer) clearInterval(this._carouselTimer);
     if (this._observer) this._observer.disconnect();
   }
 
@@ -885,8 +935,8 @@ class Component extends DCLogic {
       return {
         ...t,
         index: String(i + 1).padStart(2, '0'),
-        style: 'text-decoration:none;color:inherit;border:1px solid ' + (hovered ? '#b6512f' : 'rgba(0,0,0,.15)') + ';padding:18px;display:block;transition:border-color .15s,transform .15s,box-shadow .15s' + (hovered ? ';transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)' : ''),
-        arrowStyle: 'font:400 13px ui-monospace,monospace;color:#b6512f;transition:transform .15s' + (hovered ? ';transform:translate(2px,-2px)' : ''),
+        style: 'text-decoration:none;color:inherit;border:1px solid ' + (hovered ? '#8B5E3C' : 'rgba(0,0,0,.15)') + ';padding:18px;display:block;transition:border-color .15s,transform .15s,box-shadow .15s' + (hovered ? ';transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)' : ''),
+        arrowStyle: 'font:400 13px ui-monospace,monospace;color:#8B5E3C;transition:transform .15s' + (hovered ? ';transform:translate(2px,-2px)' : ''),
         enter: () => this.setState({ toolsHover: t.name }),
         leave: () => this.setState({ toolsHover: null })
       };
@@ -895,7 +945,7 @@ class Component extends DCLogic {
     const maxIndex = PROJECTS_DATA.length - 3;
     const clampedIndex = Math.max(0, Math.min(this.state.projectIndex, maxIndex));
     const projectDots = PROJECTS_DATA.map((p, i) => ({
-      style: 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;background:' + (i === clampedIndex ? '#b6512f' : 'rgba(0,0,0,.2)'),
+      style: 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;background:' + (i === clampedIndex ? '#8B5E3C' : 'rgba(0,0,0,.2)'),
       goTo: () => this.setState({ projectIndex: i })
     }));
     const revealStyle = (id) => this.state.revealed[id] ? 'opacity:1;transform:translateY(0)' : 'opacity:0;transform:translateY(46px)';
@@ -935,8 +985,10 @@ class Component extends DCLogic {
       projectsList: PROJECTS_DATA,
       projectTrackStyle: 'transform:translateX(-' + (clampedIndex * CARD_W) + 'px)',
       projectCounter: String(clampedIndex + 1).padStart(2, '0') + ' / ' + String(PROJECTS_DATA.length).padStart(2, '0'),
-      prevProject: () => this.setState({ projectIndex: Math.max(0, clampedIndex - 1) }),
-      nextProject: () => this.setState({ projectIndex: Math.min(maxIndex, clampedIndex + 1) }),
+      prevProject: () => { if (this._carouselTimer) { clearInterval(this._carouselTimer); } this.setState({ projectIndex: Math.max(0, clampedIndex - 1) }); this._carouselTimer = setInterval(() => { const mx = PROJECTS_DATA.length - 3; const cu = this.state.projectIndex; this.setState({ projectIndex: cu >= mx ? 0 : cu + 1 }); }, 3000); },
+      nextProject: () => { if (this._carouselTimer) { clearInterval(this._carouselTimer); } this.setState({ projectIndex: Math.min(maxIndex, clampedIndex + 1) }); this._carouselTimer = setInterval(() => { const mx = PROJECTS_DATA.length - 3; const cu = this.state.projectIndex; this.setState({ projectIndex: cu >= mx ? 0 : cu + 1 }); }, 3000); },
+      pauseCarousel: () => { if (this._carouselTimer) { clearInterval(this._carouselTimer); this._carouselTimer = null; } },
+      resumeCarousel: () => { if (!this._carouselTimer) { this._carouselTimer = setInterval(() => { const mx = PROJECTS_DATA.length - 3; const cu = this.state.projectIndex; this.setState({ projectIndex: cu >= mx ? 0 : cu + 1 }); }, 3000); } },
       projectDots,
       toolsList,
       toolsCount: String(toolsFiltered.length).padStart(2, '0'),
